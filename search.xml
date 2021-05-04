@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>markdown学习与测试</title>
+    <url>/2021/05/03/My-first-post-for-test/</url>
+    <content><![CDATA[<h1 id="测试正文"><a href="#测试正文" class="headerlink" title="测试正文"></a>测试正文</h1><h1 id="Heading-level-1"><a href="#Heading-level-1" class="headerlink" title="Heading level 1"></a>Heading level 1</h1><h2 id="Heading-level-2"><a href="#Heading-level-2" class="headerlink" title="Heading level 2"></a>Heading level 2</h2><p>This is my first time to use markdown</p>
+<p>I think I should do more exercise to get used to its grammar</p>
+<p>Test for 换行</p>
+<p>This is the first line.<br>And this is the second line.</p>
+<p>I just love <strong>bold text</strong>.</p>
+<p>测试<strong>加粗</strong></p>
+<p>测试<em>斜体文字</em></p>
+<p>测试<em><strong>斜体同时加粗</strong></em></p>
+<p><del>测试删除线</del></p>
+<p><u>测试下划线</u></p>
+<center>测试文本居中</center>
+
+<p>测试脚注<a href="%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E8%84%9A%E6%B3%A8">^1</a></p>
+<p>测试上标^这是一个上标^</p>
+<p>==测试文字高亮==</p>
+<ol>
+<li>测试有序列表，1</li>
+<li>测试有序列表，2</li>
+<li>测试列表当中的缩进<ol>
+<li>第一层缩进，1</li>
+<li>第三层缩进，2<ol>
+<li>第二层缩进</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>测试无序列表，1</p>
+<p>​        这是一段文字</p>
+</li>
+<li><p>测试无序列表，2</p>
+<ul>
+<li>测试无序列表缩进</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, markdown!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试打开图片</p>
+<p>![ ]<img src="C:\Users\StarLu\Desktop\美图\23\52520072_p0.png" alt="52520072_p0"></p>
+<p>==这张智子小姐姐的图真好康==</p>
+<p>测试连接[我的网站](<a href="https://github.com/StarLooo">StarLooo (StarLu) (github.com)</a>)</p>
+<p><a href="mailto:&#50;&#48;&#53;&#x36;&#x39;&#52;&#x30;&#x33;&#x36;&#55;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#50;&#48;&#53;&#x36;&#x39;&#52;&#x30;&#x33;&#x36;&#55;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/05/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
