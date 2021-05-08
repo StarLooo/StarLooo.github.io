@@ -19,9 +19,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title>markdown学习与测试</title>
+    <title>markdown学习笔记</title>
     <url>/2021/05/08/markdown/</url>
-    <content><![CDATA[<h1 id="测试正文"><a href="#测试正文" class="headerlink" title="测试正文"></a>测试正文</h1><h1 id="Heading-level-1"><a href="#Heading-level-1" class="headerlink" title="Heading level 1"></a>Heading level 1</h1><h2 id="Heading-level-2"><a href="#Heading-level-2" class="headerlink" title="Heading level 2"></a>Heading level 2</h2><p>This is my first time to use markdown</p>
+    <content><![CDATA[<h1 id="Markdown学习笔记"><a href="#Markdown学习笔记" class="headerlink" title="Markdown学习笔记"></a><center>Markdown学习笔记</center></h1><h2 id="一-markdown的简要介绍"><a href="#一-markdown的简要介绍" class="headerlink" title="一. markdown的简要介绍"></a>一. markdown的简要介绍</h2><p>&emsp;&emsp;根据<a href="http://markdown.p2hp.com/getting-started/">Markdown中文网</a>的描述：<br>Markdown是一种轻量级的标记语言，可用于将格式设置元素添加到纯文本文档中。<br>Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的标记语言之一。<br>&emsp;&emsp;本学期软件构造课和计算机系统课都有大量的实验任务，在完成实验后，写一写博客，<br>留下一些记录，既能够帮助自己整理所学所感，也能给后来者提供一些微不足道的教程和帮助。<br>&emsp;&emsp;这是我第一次认真尝试写一篇博客，才疏学浅，希望能够起到抛砖引玉的作用。 </p>
+<h2 id="二-markdown语法—标题"><a href="#二-markdown语法—标题" class="headerlink" title="二. markdown语法—标题"></a>二. markdown语法—标题</h2><p>This is my first time to use markdown</p>
 <p>I think I should do more exercise to get used to its grammar</p>
 <p>Test for 空格 </p>
 <p>不换行的空白 </p>
