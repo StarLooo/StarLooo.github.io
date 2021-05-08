@@ -20,7 +20,7 @@
   </entry>
   <entry>
     <title>markdown学习与测试</title>
-    <url>/2021/05/03/markdown/</url>
+    <url>/2021/05/08/markdown/</url>
     <content><![CDATA[<h1 id="测试正文"><a href="#测试正文" class="headerlink" title="测试正文"></a>测试正文</h1><h1 id="Heading-level-1"><a href="#Heading-level-1" class="headerlink" title="Heading level 1"></a>Heading level 1</h1><h2 id="Heading-level-2"><a href="#Heading-level-2" class="headerlink" title="Heading level 2"></a>Heading level 2</h2><p>This is my first time to use markdown</p>
 <p>I think I should do more exercise to get used to its grammar</p>
 <p>Test for 空格 </p>
@@ -37,10 +37,10 @@
 <p><u>测试下划线</u></p>
 <center>测试文本居中</center>
 
-<p>测试上脚注^[1]^</p>
-<p><a href="(https://github.com/StarLooo">[1]</a></p>
-<p>测试下脚注<del>[2]</del></p>
-<p>==测试文字高亮==</p>
+<p>测试上脚注<sup>[1]</sup></p>
+<p><a href="https://github.com/StarLooo">[1]</a></p>
+<p>测试下脚注<sub>[2]</sub></p>
+<p><mark>测试文字高亮</mark></p>
 <ol>
 <li>测试有序列表，1</li>
 <li>测试有序列表，2</li>
@@ -67,14 +67,16 @@
 
 <p>测试打开图片</p>
 <p><a href="https://imgtu.com/i/gGdtld"><img src="https://z3.ax1x.com/2021/05/08/gGdtld.jpg" alt="gGdtld.jpg"></a></p>
-<p>==这张风景图真好康==</p>
-<p>测试超连接[<a href="https://github.com/StarLooo">我的github</a>]</p>
+<p><mark>这张风景图真好康</mark></p>
+<p>测试超连接<a href="https://github.com/StarLooo">我的github</a></p>
 ]]></content>
       <categories>
-        <category>测试</category>
+        <category>我的笔记</category>
       </categories>
       <tags>
         <tag>测试</tag>
+        <tag>markdown</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
 </search>
