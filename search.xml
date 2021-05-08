@@ -23,9 +23,13 @@
     <url>/2021/05/03/markdown/</url>
     <content><![CDATA[<h1 id="测试正文"><a href="#测试正文" class="headerlink" title="测试正文"></a>测试正文</h1><h1 id="Heading-level-1"><a href="#Heading-level-1" class="headerlink" title="Heading level 1"></a>Heading level 1</h1><h2 id="Heading-level-2"><a href="#Heading-level-2" class="headerlink" title="Heading level 2"></a>Heading level 2</h2><p>This is my first time to use markdown</p>
 <p>I think I should do more exercise to get used to its grammar</p>
+<p>Test for 空格 </p>
+<p>不换行的空白 </p>
+<p>这一行不应该单独提行</p>
 <p>Test for 换行</p>
-<p>This is the first line.<br>And this is the second line.</p>
-<p>I just love <strong>bold text</strong>.</p>
+<p>This is the first line.  </p>
+<p>And this is the second line.</p>
+<p>I just love <strong>bold text</strong></p>
 <p>测试<strong>加粗</strong></p>
 <p>测试<em>斜体文字</em></p>
 <p>测试<em><strong>斜体同时加粗</strong></em></p>
@@ -33,8 +37,9 @@
 <p><u>测试下划线</u></p>
 <center>测试文本居中</center>
 
-<p>测试脚注<a href="%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E8%84%9A%E6%B3%A8">^1</a></p>
-<p>测试上标^这是一个上标^</p>
+<p>测试上脚注^[1]^</p>
+<p><a href="(https://github.com/StarLooo">[1]</a></p>
+<p>测试下脚注<del>[2]</del></p>
 <p>==测试文字高亮==</p>
 <ol>
 <li>测试有序列表，1</li>
@@ -63,7 +68,7 @@
 <p>测试打开图片</p>
 <p><a href="https://imgtu.com/i/gGdtld"><img src="https://z3.ax1x.com/2021/05/08/gGdtld.jpg" alt="gGdtld.jpg"></a></p>
 <p>==这张风景图真好康==</p>
-<p>测试连接[我的网站](<a href="https://github.com/StarLooo">StarLooo (StarLu) (github.com)</a>)</p>
+<p>测试超连接[<a href="https://github.com/StarLooo">我的github</a>]</p>
 ]]></content>
       <categories>
         <category>测试</category>
