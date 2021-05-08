@@ -21,8 +21,65 @@
   <entry>
     <title>markdown学习笔记</title>
     <url>/2021/05/08/markdown/</url>
-    <content><![CDATA[<h1 id="Markdown学习笔记"><a href="#Markdown学习笔记" class="headerlink" title="Markdown学习笔记"></a><center>Markdown学习笔记</center></h1><h2 id="一-markdown的简要介绍"><a href="#一-markdown的简要介绍" class="headerlink" title="一. markdown的简要介绍"></a>一. markdown的简要介绍</h2><p>&emsp;&emsp;根据<a href="http://markdown.p2hp.com/getting-started/">Markdown中文网</a>的描述：<br>Markdown是一种轻量级的标记语言，可用于将格式设置元素添加到纯文本文档中。<br>Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的标记语言之一。<br>&emsp;&emsp;本学期软件构造课和计算机系统课都有大量的实验任务，在完成实验后，写一写博客，<br>留下一些记录，既能够帮助自己整理所学所感，也能给后来者提供一些微不足道的教程和帮助。<br>&emsp;&emsp;这是我第一次认真尝试写一篇博客，才疏学浅，希望能够起到抛砖引玉的作用。 </p>
-<h2 id="二-markdown语法—标题"><a href="#二-markdown语法—标题" class="headerlink" title="二. markdown语法—标题"></a>二. markdown语法—标题</h2><p>This is my first time to use markdown</p>
+    <content><![CDATA[<h1 id="Markdown学习笔记"><a href="#Markdown学习笔记" class="headerlink" title="Markdown学习笔记"></a><center>Markdown学习笔记</center></h1><h2 id="一-markdown的简要介绍"><a href="#一-markdown的简要介绍" class="headerlink" title="一. markdown的简要介绍"></a>一. markdown的简要介绍</h2><p>
+&emsp;&emsp;根据<a href="http://markdown.p2hp.com/getting-started/">
+Markdown中文网 </a>的描述：Markdown是一种轻量级的标记语言，
+可用于将格式设置元素添加到纯文本文档中。 
+Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的标记语言之一。<br>  
+&emsp;&emsp;本学期软件构造课和计算机系统课都有大量的实验任务, 
+在完成实验后，写一写博客,留下一些记录，既能够帮助自己整理所学所感，
+也能给后来者提供一些微不足道的教程和帮助。<br>
+&emsp;&emsp;这是我第一次认真尝试写一篇博客，才疏学浅，希望能够起到抛砖引玉的作用。
+此外，本文中由于hexo配置与markdown本身语法以及使用编辑器的种种桎梏，有些本应有效
+的markdown语法在实际呈现到blog的时候出现了与预期不符的问题，<mark>所以为了解决这些
+问题，我被迫使用了一些html语言</mark>>，但是实际上我并没有系统学习过markdown或者是html，
+所以很有可能写的不规范或者不具有可扩展性和可移植性。
+</p>
+
+<h2 id="二-markdown语法之标题"><a href="#二-markdown语法之标题" class="headerlink" title="二. markdown语法之标题"></a>二. markdown语法之标题</h2><p>
+&emsp;&emsp;依据<a href="http://markdown.p2hp.com/basic-syntax/">
+官方文档 </a>，markdown一共支持从大到小共六级标题，其具体使用语法如下所示：<br>
+</p>
+
+<pre><code>    在markdown中可以使用&quot;k个#+空格+HeaderName&quot;就可以生成一个k级标题，
+k为1到6的整数。
+    注意，使用这种方式创建标题时必须与上面的段落之间空一行
+    而在html中可以使用&lt;hk&gt;HeaderName&lt;/hk&gt;的方法生成相应级别的标题。
+    标题的字体大小与级数有关，1级标题的字体最大，6级标题的字体最小。
+    此外，还有一种生成1、2级标题的替代格式，此处不再赘述。
+</code></pre>
+<h2> 三. markdown语法之基本字句处理</h2>
+
+<h4 id="1-换行"><a href="#1-换行" class="headerlink" title="1. 换行"></a>1. 换行</h4><pre><code>    在markdown中可以使用两个空格加enter键换行,但不知是hexo的配置原因
+还是我用IDEA/Typro编写md文件的时候直接按enter就会自动换行，这样其实还
+挺麻烦的，因为没有办法在一段较长的时候分割开段落，因为一按回车就会自动强
+行换行。这也是为什么我要在代码里引入html的原因。
+    在html中，换行只需要在上一行尾部加上&lt;\br&gt;即可。
+    如果不显示地用上述方法换行的话，直接按enter并不会在显示的时候换行，
+只是可以在编写的时候重新提行写，这样更人性化。
+</code></pre>
+<h3 id="2-粗体和斜体"><a href="#2-粗体和斜体" class="headerlink" title="2. 粗体和斜体"></a>2. 粗体和斜体</h3><pre><code>    (1)
+        在markdown中对某个字或者某段词句加粗的语法为：**想要加粗的文字**
+    或者在html中用&lt;strong&gt;想要加粗的文字&lt;/strong&gt;的方式加粗。
+    (2)
+        在markdown中对某个字或者某段词句设为斜体的语法为：*想要倾斜的文字*
+    或者在html中用&lt;em&gt;想要加粗的文字&lt;/em&gt;的方式加粗。
+    (3)
+        如果既想要加粗又想要斜体，可以这样写：***想要加粗并倾斜的文字***
+    或者在html中用&lt;strong&gt;&lt;em&gt;想要加粗的文字&lt;/em&gt;&lt;/strong&gt;。
+</code></pre>
+<h3 id="3-居中"><a href="#3-居中" class="headerlink" title="3. 居中"></a>3. 居中</h3><pre><code>    我不清楚markdown是否提供了将文字居中的语法，所以我学习了如何使用html
+来将文字居中，其具体语法为：&lt;center&gt;想要居中的文字&lt;/center&gt;
+</code></pre>
+<h3 id="4-上脚标和下脚标"><a href="#4-上脚标和下脚标" class="headerlink" title="4. 上脚标和下脚标"></a>4. 上脚标和下脚标</h3><pre><code>    在typro中偏好设置里可以选择引入markdown扩展语法中的脚标：
+    ^上脚标^和~下脚标~
+    但是我使用了上述方式成功在编辑器里测试了上下脚标功能后运用
+到博客并部署到hexo中时却发现实际显示的结果与本机上测试有所不同。
+所以，被逼无奈，又只好寻求html这个法宝了：
+    在html中，添加上下脚标的语法为：
+    &lt;sup&gt;上角标&lt;/sup&gt;和&lt;sub&gt;下脚标&lt;/sub&gt;
+</code></pre>
+<p>This is my first time to use markdown</p>
 <p>I think I should do more exercise to get used to its grammar</p>
 <p>Test for 空格 </p>
 <p>不换行的空白 </p>
