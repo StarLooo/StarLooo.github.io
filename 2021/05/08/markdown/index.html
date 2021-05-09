@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2k</span>
+            <span class="post-count">2.7k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">7 min</span>
+            <span class="post-count">10 min</span>
         </span>
     </span>
 </div>
@@ -120,7 +120,9 @@ Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的
 此外，本文中由于hexo配置与markdown本身语法以及使用编辑器的种种桎梏，有些本应有效
 的markdown语法在实际呈现到blog的时候出现了与预期不符的问题，<mark>所以为了解决这些
 问题，我被迫使用了一些html语言</mark>，但是实际上我并没有系统学习过markdown或者是html，
-所以很有可能写的不规范或者不具有可扩展性和可移植性。
+所以很有可能写的不规范或者不具有可扩展性和可移植性。<br>
+&emsp;&emsp;同时为了排版方便以及演示代码的展现，大部分博客文字内容都呈现在代码块。<br>
+&emsp;&emsp;下面正式进入正文部分：
 </p>
 
 <h2 id="二-markdown语法之标题"><a href="#二-markdown语法之标题" class="headerlink" title="二. markdown语法之标题"></a>二. markdown语法之标题</h2><p>
@@ -136,7 +138,7 @@ k为1到6的整数。
     此外，还有一种生成1、2级标题的替代格式，此处不再赘述。
     为了不破坏本博客的标题结构，此处就不做演示了。
 </code></pre>
-<h2> 三. markdown语法之基本字句处理</h2>
+<h2> 三. markdown语法之文字处理</h2>
 
 <h4 id="1-换行"><a href="#1-换行" class="headerlink" title="1. 换行"></a>1. 换行</h4><pre><code>    在markdown中可以使用两个空格加enter键换行,但不知是hexo的配置原因
 还是我用IDEA/Typro编写md文件的时候直接按enter就会自动换行，这样其实还
@@ -202,31 +204,56 @@ cnblogs.com/SimonHu1993/p/9257176.html)。
 三种空格的大小：
 </code></pre>
 <p>&emsp;&emsp;&emsp;|&nbsp;|———|&ensp;|———|&emsp;|</p>
-<h2 id="markdown语法之链接"><a href="#markdown语法之链接" class="headerlink" title="markdown语法之链接"></a>markdown语法之链接</h2><h4 id="1-自动链接"><a href="#1-自动链接" class="headerlink" title="1. 自动链接"></a>1. 自动链接</h4><pre><code>    自动链接就是将地址原封不动的显示出来，同时它也将生成该地址的超链接，
+<h2 id="四-markdown语法之链接与引用"><a href="#四-markdown语法之链接与引用" class="headerlink" title="四. markdown语法之链接与引用"></a>四. markdown语法之链接与引用</h2><h4 id="1-自动链接"><a href="#1-自动链接" class="headerlink" title="1. 自动链接"></a>1. 自动链接</h4><pre><code>    自动链接就是将地址原封不动的显示出来，同时它也将生成该地址的超链接，
 它常用于邮箱地址和较短网址的显示。语法是在该链接地址前后加上一对&lt; &gt;，常
 用于显示邮箱或者网址等等。
     比如，使用代码&quot;&lt;https://github.com/&gt;&quot;可以生成如下的自动链接：
 </code></pre>
 <p>&emsp;&emsp;&emsp;<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
-<p>I think I should do more exercise to get used to its grammar</p>
-<p>Test for 空格 </p>
-<p>不换行的空白 </p>
-<p>这一行不应该单独提行</p>
-<p>Test for 换行</p>
-<p>This is the first line.  </p>
-<p>And this is the second line.</p>
-<p>I just love <strong>bold text</strong></p>
-<p>测试<strong>加粗</strong></p>
-<p>测试<em>斜体文字</em></p>
-<p>测试<em><strong>斜体同时加粗</strong></em></p>
-<p><del>测试删除线</del></p>
-<p><u>测试下划线</u></p>
-<center>测试文本居中</center>
-
-<p>测试上脚注<sup>[1]</sup></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/StarLooo">[1]</a></p>
-<p>测试下脚注<sub>[2]</sub></p>
-<p><mark>测试文字高亮</mark></p>
+<h4 id="2-文本链接"><a href="#2-文本链接" class="headerlink" title="2. 文本链接"></a>2. 文本链接</h4><pre><code>    markdown支持行内式(inline)和参考式(reference)两种形式的超文本链
+接语法格式。不管是哪一种，链接文字都是用方括号&quot;[]&quot;来标记。
+    首先是行内式，其markdown语法为&quot;[txt](url)&quot;，对应html语法为&lt;a hr
+ef=&quot;url&quot;&gt;text&lt;/a&gt;。如果你还想要加上链接的title，只要在网址后面用双引
+号把title文字包起来即可。
+    然后是参考式，其用途主要是可以先声明超链接但是并不给出其定义，而是在
+md文件的任何其他位置(一般是末尾)加以定义。其markdown语法为：先定义参考
+refid：[text][refid]，再定义参考refid所指向的具体地址[refid]:url。
+注意，这里有一些简写和细节问题，详情可以参考下述用于演示参考式的链接里的
+博客。
+    以下我们用html语法&lt;a href=&quot;https://starlooo.github.io/&quot;&gt;我的
+博客主页&lt;/a&gt;来演示行内式文编链接；然后用markdown语法[一篇关于链接的参
+考博客][ref_blog_1]和[ref_blog_1]:https://blog.csdn.net/baox
+iao7872/article/details/90240402来演示参考式文本链接：
+</code></pre>
+<p>&emsp;&emsp;&emsp;<a href="https://starlooo.github.io/">我的博客主页</a><br><br>&emsp;&emsp;&emsp;<a target="_blank" rel="noopener" href="https://blog.csdn.net/baoxiao7872/article/details/90240402">一篇关于链接的参考博客</a></p>
+<h4 id="3-图片链接"><a href="#3-图片链接" class="headerlink" title="3. 图片链接"></a>3. 图片链接</h4><pre><code>    markdown使用与文本链接几乎相同的方式来实现图片链接，同样支持行内式
+和参考式两种形式，只是需要在方括号前加上一个&quot;!&quot;。
+    以行内式为例，图片链接的markdown语法为：![alt_txt](url)，对应ht
+ml写法为&lt;img src=&quot;url&quot; alt=&quot;text&quot;&gt;，其中文本部分可选，如果没有需要可
+以不写。
+    但这里有个问题，我目前虽然可以把本地的图片链接入markdown，但当写博
+客部署到云端后却发现图片无法加载。目前的解决方法是使用图床，将自己本地的
+图片上传到网上，然后生成链接来引用。下面提供的链接的知乎回答里有关于一些
+图床的介绍，读者可以自行选用。
+    以下我们分别用markdown语法：[illustration_1](https://z3.ax1x
+.com/2021/05/08/gGdtld.jpg)]和html语法&lt;img src=&quot;https://z3.ax1
+x.com/2021/05/09/gYI9n1.jpg&quot; alt=&quot;gYI9n1.jpg&quot; border=&quot;0&quot; /&gt;来
+演示图片链接：
+</code></pre>
+<p><img src="https://z3.ax1x.com/2021/05/08/gGdtld.jpg" alt="illustration_1"><br><img src="https://z3.ax1x.com/2021/05/09/gYI9n1.jpg" alt="illustrtion_2"></p>
+<h4 id="4-块引用"><a href="#4-块引用" class="headerlink" title="4. 块引用"></a>4. 块引用</h4><pre><code>    markdown可以创建块引用，具体方法是在段落前添加一个&quot;&gt;&quot;，如果需要对
+多个段落添加块引用需要在空行前也加上&quot;&gt;&quot;。
+    同时，块引用可以嵌套使用，可以在一级块引用内使用&quot;&gt;&gt;&quot;创建二级块引用。
+另一方面块引用的内部也可以使用markdown的其他语法元素，具体可以自行尝试。
+    以下我们用&gt;**块引用段落1**&lt;br&gt;和&gt;*块引用段落2*&lt;br&gt;以及&gt;&gt;&lt;mark&gt;
+嵌套块引用&lt;mark&gt;引用来演示块引用：
+</code></pre>
+<blockquote>
+<p><strong>块引用段落1</strong><br><br><em>块引用段落2</em><br></p>
+<blockquote>
+<p><mark>嵌套块引用<mark></p>
+</blockquote>
+</blockquote>
 <ol>
 <li>测试有序列表，1</li>
 <li>测试有序列表，2</li>
