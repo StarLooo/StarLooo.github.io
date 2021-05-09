@@ -79,8 +79,24 @@ k为1到6的整数。
     在html中，添加上下脚标的语法为：
     &lt;sup&gt;上角标&lt;/sup&gt;和&lt;sub&gt;下脚标&lt;/sub&gt;
 </code></pre>
-<p>This is my first time to use markdown</p>
-<p>I think I should do more exercise to get used to its grammar</p>
+<h3 id="5-高亮"><a href="#5-高亮" class="headerlink" title="5. 高亮"></a>5. 高亮</h3><pre><code>    在typro中偏好设置里可以选择引入markdown扩展语法中的高亮：
+    ==想要高亮的文字==
+    但是我使用了上述方式成功在编辑器里测试了上下脚标功能后运用
+到博客并部署到hexo中时却发现实际显示的结果与本机上测试有所不同。
+所以，被逼无奈，又只好寻求html这个法宝了：
+    在html中，添加上下脚标的语法为：
+    &lt;mark&gt;想要高亮的语句&lt;/mark&gt;
+</code></pre>
+<h3 id="6-下划线和删除线"><a href="#6-下划线和删除线" class="headerlink" title="6. 下划线和删除线"></a>6. 下划线和删除线</h3><pre><code>    markdown语法中，高亮的实现方法为:~~想要画上删除线的内容~~ ；
+    下划线的实现方法未知，html中可以这样写：&lt;u&gt;想要画上下划线的内容&lt;/u&gt;
+</code></pre>
+<h3 id="6-空格"><a href="#6-空格" class="headerlink" title="6. 空格"></a>6. 空格</h3><pre><code>    一种打空格的方式是直接按space键或者tab键，但是为了更好地控制空白
+的大小，可以使用html当中的空格：
+    可以用&quot;&amp;nbsp;&quot;或者&quot;&amp;ensp;&quot;或者&quot;&amp;emsp&quot;等不同定义的空格来实现想
+要的空白宽度，具体可以参照这篇博客：html空格的五种表示(https://www.
+cnblogs.com/SimonHu1993/p/9257176.html)。
+</code></pre>
+<h2 id="markdown语法之链接"><a href="#markdown语法之链接" class="headerlink" title="markdown语法之链接"></a>markdown语法之链接</h2><p>I think I should do more exercise to get used to its grammar</p>
 <p>Test for 空格 </p>
 <p>不换行的空白 </p>
 <p>这一行不应该单独提行</p>
