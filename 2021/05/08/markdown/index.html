@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.6k</span>
+            <span class="post-count">2k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -119,7 +119,7 @@ Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的
 &emsp;&emsp;这是我第一次认真尝试写一篇博客，才疏学浅，希望能够起到抛砖引玉的作用。
 此外，本文中由于hexo配置与markdown本身语法以及使用编辑器的种种桎梏，有些本应有效
 的markdown语法在实际呈现到blog的时候出现了与预期不符的问题，<mark>所以为了解决这些
-问题，我被迫使用了一些html语言</mark>>，但是实际上我并没有系统学习过markdown或者是html，
+问题，我被迫使用了一些html语言</mark>，但是实际上我并没有系统学习过markdown或者是html，
 所以很有可能写的不规范或者不具有可扩展性和可移植性。
 </p>
 
@@ -134,6 +134,7 @@ k为1到6的整数。
     而在html中可以使用&lt;hk&gt;HeaderName&lt;/hk&gt;的方法生成相应级别的标题。
     标题的字体大小与级数有关，1级标题的字体最大，6级标题的字体最小。
     此外，还有一种生成1、2级标题的替代格式，此处不再赘述。
+    为了不破坏本博客的标题结构，此处就不做演示了。
 </code></pre>
 <h2> 三. markdown语法之基本字句处理</h2>
 
@@ -144,7 +145,10 @@ k为1到6的整数。
     在html中，换行只需要在上一行尾部加上&lt;\br&gt;即可。
     如果不显示地用上述方法换行的话，直接按enter并不会在显示的时候换行，
 只是可以在编写的时候重新提行写，这样更人性化。
+    下面使用&quot;&amp;emsp;&amp;emsp;&amp;emsp;这是第一行&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;
+这是第二行&quot;来演示效果：
 </code></pre>
+<p>&emsp;&emsp;&emsp;这是第一行<br>&emsp;&emsp;&emsp;这是第二行</p>
 <h3 id="2-粗体和斜体"><a href="#2-粗体和斜体" class="headerlink" title="2. 粗体和斜体"></a>2. 粗体和斜体</h3><pre><code>    (1)
         在markdown中对某个字或者某段词句加粗的语法为：**想要加粗的文字**
     或者在html中用&lt;strong&gt;想要加粗的文字&lt;/strong&gt;的方式加粗。
@@ -154,10 +158,15 @@ k为1到6的整数。
     (3)
         如果既想要加粗又想要斜体，可以这样写：***想要加粗并倾斜的文字***
     或者在html中用&lt;strong&gt;&lt;em&gt;想要加粗的文字&lt;/em&gt;&lt;/strong&gt;。
+    
+        下面使用&quot;&lt;strong&gt;&lt;em&gt;markdown使用笔记&lt;/em&gt;&lt;/strong&gt;&quot;来演示效果：
 </code></pre>
+<p>&emsp;&emsp;&emsp;<strong><em>markdown使用笔记</em></strong></p>
 <h3 id="3-居中"><a href="#3-居中" class="headerlink" title="3. 居中"></a>3. 居中</h3><pre><code>    我不清楚markdown是否提供了将文字居中的语法，所以我学习了如何使用html
 来将文字居中，其具体语法为：&lt;center&gt;想要居中的文字&lt;/center&gt;
+    下面使用&quot;&lt;center&gt;我在中间&lt;/center&gt;&quot;来演示效果：
 </code></pre>
+<p>&emsp;&emsp;&emsp;<center>我在中间</center></p>
 <h3 id="4-上脚标和下脚标"><a href="#4-上脚标和下脚标" class="headerlink" title="4. 上脚标和下脚标"></a>4. 上脚标和下脚标</h3><pre><code>    在typro中偏好设置里可以选择引入markdown扩展语法中的脚标：
     ^上脚标^和~下脚标~
     但是我使用了上述方式成功在编辑器里测试了上下脚标功能后运用
@@ -165,25 +174,41 @@ k为1到6的整数。
 所以，被逼无奈，又只好寻求html这个法宝了：
     在html中，添加上下脚标的语法为：
     &lt;sup&gt;上角标&lt;/sup&gt;和&lt;sub&gt;下脚标&lt;/sub&gt;
+    不过有一个待解决的问题是如何打出双脚标，个人推可能需要Latex
+插件的支持用公式编辑的方法打出来吧。
+    下面使用&quot;H&lt;sub&gt;2&lt;/sub&gt;O&quot;和2&quot;&lt;sup&gt;10&lt;/sup&gt;=1024&quot;来演示效果：
 </code></pre>
+<p>&emsp;&emsp;&emsp;H<sub>2</sub>O &emsp; 2<sup>10</sup>=1024<br></p>
 <h3 id="5-高亮"><a href="#5-高亮" class="headerlink" title="5. 高亮"></a>5. 高亮</h3><pre><code>    在typro中偏好设置里可以选择引入markdown扩展语法中的高亮：
     ==想要高亮的文字==
     但是我使用了上述方式成功在编辑器里测试了上下脚标功能后运用
 到博客并部署到hexo中时却发现实际显示的结果与本机上测试有所不同。
 所以，被逼无奈，又只好寻求html这个法宝了：
-    在html中，添加上下脚标的语法为：
-    &lt;mark&gt;想要高亮的语句&lt;/mark&gt;
+    在html中，添加上下脚标的语法为：&lt;mark&gt;想要高亮的语句&lt;/mark&gt;
+    下面使用&quot;&lt;mark&gt;注意了注意了&lt;/mark&gt;&quot;来演示效果：
 </code></pre>
-<h3 id="6-下划线和删除线"><a href="#6-下划线和删除线" class="headerlink" title="6. 下划线和删除线"></a>6. 下划线和删除线</h3><pre><code>    markdown语法中，高亮的实现方法为:~~想要画上删除线的内容~~ ；
+<p>&emsp;&emsp;&emsp;<mark>注意了注意了</mark></p>
+<h3 id="6-下划线和删除线"><a href="#6-下划线和删除线" class="headerlink" title="6. 下划线和删除线"></a>6. 下划线和删除线</h3><pre><code>    markdown语法中，删除线的实现方法为:~~想要画上删除线的内容~~ ；
     下划线的实现方法未知，html中可以这样写：&lt;u&gt;想要画上下划线的内容&lt;/u&gt;
+    下面使用&quot;~~请无视这句话~~&quot;以及&quot;&lt;u&gt;划重点啦&lt;/u&gt;&quot;来演示效果：
 </code></pre>
+<p>&emsp;&emsp;&emsp;<del>请无视这句话</del> &emsp; <u>划重点啦</u></p>
 <h3 id="6-空格"><a href="#6-空格" class="headerlink" title="6. 空格"></a>6. 空格</h3><pre><code>    一种打空格的方式是直接按space键或者tab键，但是为了更好地控制空白
 的大小，可以使用html当中的空格：
     可以用&quot;&amp;nbsp;&quot;或者&quot;&amp;ensp;&quot;或者&quot;&amp;emsp&quot;等不同定义的空格来实现想
 要的空白宽度，具体可以参照这篇博客：html空格的五种表示(https://www.
 cnblogs.com/SimonHu1993/p/9257176.html)。
+    下面使用&quot;|&amp;nbsp|---------|&amp;ensp|---------|&amp;emsp;|&quot;来演示这
+三种空格的大小：
 </code></pre>
-<h2 id="markdown语法之链接"><a href="#markdown语法之链接" class="headerlink" title="markdown语法之链接"></a>markdown语法之链接</h2><p>I think I should do more exercise to get used to its grammar</p>
+<p>&emsp;&emsp;&emsp;|&nbsp;|———|&ensp;|———|&emsp;|</p>
+<h2 id="markdown语法之链接"><a href="#markdown语法之链接" class="headerlink" title="markdown语法之链接"></a>markdown语法之链接</h2><h4 id="1-自动链接"><a href="#1-自动链接" class="headerlink" title="1. 自动链接"></a>1. 自动链接</h4><pre><code>    自动链接就是将地址原封不动的显示出来，同时它也将生成该地址的超链接，
+它常用于邮箱地址和较短网址的显示。语法是在该链接地址前后加上一对&lt; &gt;，常
+用于显示邮箱或者网址等等。
+    比如，使用代码&quot;&lt;https://github.com/&gt;&quot;可以生成如下的自动链接：
+</code></pre>
+<p>&emsp;&emsp;&emsp;<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+<p>I think I should do more exercise to get used to its grammar</p>
 <p>Test for 空格 </p>
 <p>不换行的空白 </p>
 <p>这一行不应该单独提行</p>
