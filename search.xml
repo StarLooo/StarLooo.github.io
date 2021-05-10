@@ -253,12 +253,8 @@ own程序的代码块来演示：
 <td align="right">短文本</td>
 <td align="center">中等文本</td>
 </tr>
-<tr>
-<td align="left">以下是两篇有关于markdown表格的参考博客：<br></td>
-<td align="right"></td>
-<td align="center"></td>
-</tr>
 </tbody></table>
+<p>以下是两篇有关于markdown表格的参考博客：<br></p>
 <p><a href="https://www.jianshu.com/p/2df05f279331">Markdown插入表格语法</a></p>
 <p><a href="https://blog.csdn.net/tuxingchen6/article/details/55222951">利用Markdown创建表格</a></p>
 ]]></content>
