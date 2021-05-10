@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.7k</span>
+            <span class="post-count">3.7k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">10 min</span>
+            <span class="post-count">14 min</span>
         </span>
     </span>
 </div>
@@ -254,34 +254,100 @@ x.com/2021/05/09/gYI9n1.jpg&quot; alt=&quot;gYI9n1.jpg&quot; border=&quot;0&quot
 <p><mark>嵌套块引用<mark></p>
 </blockquote>
 </blockquote>
-<ol>
-<li>测试有序列表，1</li>
-<li>测试有序列表，2</li>
-<li>测试列表当中的缩进<ol>
-<li>第一层缩进，1</li>
-<li>第三层缩进，2<ol>
-<li>第二层缩进</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<ul>
-<li><p>测试无序列表，1</p>
-<p>​        这是一段文字</p>
-</li>
-<li><p>测试无序列表，2</p>
-<ul>
-<li>测试无序列表缩进</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, markdown!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-代码和代码块"><a href="#5-代码和代码块" class="headerlink" title="5. 代码和代码块"></a>5. 代码和代码块</h4><pre><code>    markdown中可以标记行内代码，具体方法是使用一对反引号&quot;`&quot;将想要写的代码
+框住，或者使用html语法中的&lt;code&gt;inline_code&lt;code&gt;。
+    此外，markdown可以创建代码块，具体方法是在段代码块的每一行前缩进4个空
+格或者1个制表符。另以种方式是把代码块框在一对“```”或者&quot;~~~&quot;之内。另外，根
+据我的实验，使用4个空格或1个制表符的方式与使用3个反引号或波浪号框住的方式的
+区别在于后者创建的代码块会标上行号。
+    以下我们用&quot;`printf()`函数是C语言的基本输出函数&quot;和一段写有HelloMarkd
+own程序的代码块来演示：
+</code></pre>
+<p><code>printf()</code>函数是C语言的基本输出函数<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    printf(&quot;Hello, markdown!&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>测试打开图片</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gGdtld"><img src="https://z3.ax1x.com/2021/05/08/gGdtld.jpg" alt="gGdtld.jpg"></a></p>
-<p><mark>这张风景图真好康</mark></p>
-<p>测试超连接<a target="_blank" rel="noopener" href="https://github.com/StarLooo">我的github</a></p>
+<h2 id="五-markdown语法之列表与表格"><a href="#五-markdown语法之列表与表格" class="headerlink" title="五. markdown语法之列表与表格"></a>五. markdown语法之列表与表格</h2><h3 id="1-无序列表"><a href="#1-无序列表" class="headerlink" title="1. 无序列表"></a>1. 无序列表</h3><pre><code>    可以使用在行首加上&quot;-&quot;或&quot;+&quot;或&quot;*&quot;标记的方式创建markdown无序列表。所谓
+无序列表，指的是各表项间是并列关系，并没有相对先后顺序。渲染结果是一个小圈。
+    此外可以在无序列表内部用同样的方式创建嵌套的无序列表。
+    以下代码用来演示无序列表的创建:
+    * 无序列表的演示,表项1
+        - 无序列表的演示，子表项1
+        + 无序列表的演示，子表项2
+
+    * 无序列表的演示,表项2
+</code></pre>
+<ul>
+<li>无序列表的演示,表项1<ul>
+<li>无序列表的演示，子表项1</li>
+</ul>
+<ul>
+<li>无序列表的演示，子表项2</li>
+</ul>
+</li>
+<li>无序列表的演示,表项2        </li>
+</ul>
+<h3 id="2-有序列表"><a href="#2-有序列表" class="headerlink" title="2. 有序列表"></a>2. 有序列表</h3><pre><code>    可以使用在行首加上”x.“标记的方式创建markdown有序列表，其中x为相应数字。
+所谓有序列表，指的是各表项间是递进关系，有相对先后顺序。渲染结果是一个从1开始
+按顺序拍下去的各表项，而子表项用排序渲染出的是对应罗马数字。
+    此外可以在有序列表用相同的方式创建嵌套的有序列表，甚至可以用创建无序列表
+的方式嵌套无序列表，反之亦然。
+    以下代码用来演示有序列表的创建:
+    1. 有序列表的演示,表项1
+        1. 有序列表的演示，子表项1
+        2. 有序列表的演示，子表项2
+
+    2. 有序列表的演示,表项2
+</code></pre>
+<ol>
+<li><p>有序列表的演示,表项1</p>
+<ol>
+<li>有序列表的演示，子表项1</li>
+<li>有序列表的演示，子表项2</li>
+</ol>
+</li>
+<li><p>有序列表的演示,表项2</p>
+</li>
+</ol>
+<h3 id="3-表格"><a href="#3-表格" class="headerlink" title="3. 表格"></a>3. 表格</h3><pre><code>    markdown支持使用&quot;|&quot;分割各表格项以及标记表格的行首行尾的方式创建表格，其中
+行首行尾的&quot;|&quot;可以省略。第一行一般用于写每列的列名，列名采取居中对齐方式。
+    在对齐方面，可在第二行指定不同列单元格内容的对齐方式，默认为左对齐，可以在
+相应位置写入&quot;-:&quot;表示这列的文字采用右对齐，同理&quot;:-&quot;表示左对齐，&quot;:-:&quot;表示居中对
+齐。此外，需要注意创建表格时需要与上一段有一个空行，不然无法被识别。
+    不知道是什么原因，在我使用IDEA编写md文件时，第二行里如果只使用一个&quot;-&quot;的话
+实时渲染的结果并没有创建出对应表格，但实际上部署到云端博客的时候是创建了相应表格
+的。但为了本地测试方便，我还是写了3个以上的&quot;-&quot;让IDEA识别出表格。
+    以下代码用来演示创建表格：
+    | 左对齐列 | 右对齐列 | 居中对齐列 |
+    | :------| ------: | :------: |
+    | 短文本 | 中等文本 | 稍微长一点的文本 |
+    | 稍微长一点的文本 | 短文本 | 中等文本 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">左对齐列</th>
+<th align="right">右对齐列</th>
+<th align="center">居中对齐列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">短文本</td>
+<td align="right">中等文本</td>
+<td align="center">稍微长一点的文本</td>
+</tr>
+<tr>
+<td align="left">稍微长一点的文本</td>
+<td align="right">短文本</td>
+<td align="center">中等文本</td>
+</tr>
+<tr>
+<td align="left">以下是两篇有关于markdown表格的参考博客：<br></td>
+<td align="right"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2df05f279331">Markdown插入表格语法</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tuxingchen6/article/details/55222951">利用Markdown创建表格</a></p>
  
       <!-- reward -->
       
