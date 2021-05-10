@@ -4,6 +4,8 @@
     <title>Hello World</title>
     <url>/2021/05/02/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -37,6 +39,8 @@ Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的
 &emsp;&emsp;同时为了排版方便以及演示代码的展现，大部分博客文字内容都呈现在代码块。<br>
 &emsp;&emsp;下面正式进入正文部分：
 </p>
+
+<span id="more"></span>
 
 <h2 id="二-markdown语法之标题"><a href="#二-markdown语法之标题" class="headerlink" title="二. markdown语法之标题"></a>二. markdown语法之标题</h2><p>
 &emsp;&emsp;依据<a href="http://markdown.p2hp.com/basic-syntax/">
@@ -254,7 +258,7 @@ own程序的代码块来演示：
 <td align="center">中等文本</td>
 </tr>
 </tbody></table>
-<p>以下是两篇有关于markdown表格的参考博客：<br></p>
+<p>以下是两篇有关于markdown表格的参考博客:</p>
 <p><a href="https://www.jianshu.com/p/2df05f279331">Markdown插入表格语法</a></p>
 <p><a href="https://blog.csdn.net/tuxingchen6/article/details/55222951">利用Markdown创建表格</a></p>
 ]]></content>

@@ -6,7 +6,7 @@
   <link href="https://starlooo.github.io/atom.xml" rel="self"/>
   
   <link href="https://starlooo.github.io/"/>
-  <updated>2021-05-10T00:58:03.018Z</updated>
+  <updated>2021-05-10T01:04:35.653Z</updated>
   <id>https://starlooo.github.io/</id>
   
   <author>
@@ -21,16 +21,25 @@
     <link href="https://starlooo.github.io/2021/05/08/markdown/"/>
     <id>https://starlooo.github.io/2021/05/08/markdown/</id>
     <published>2021-05-07T16:00:00.000Z</published>
-    <updated>2021-05-10T00:58:03.018Z</updated>
+    <updated>2021-05-10T01:04:35.653Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Markdown学习笔记&quot;&gt;&lt;a href=&quot;#Markdown学习笔记&quot; class=&quot;headerlink&quot; title=&quot;Markdown学习笔记&quot;&gt;&lt;/a&gt;&lt;center&gt;Markdown学习笔记&lt;/center&gt;&lt;/h1&gt;&lt;h2</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;Markdown学习笔记&quot;&gt;&lt;a href=&quot;#Markdown学习笔记&quot; class=&quot;headerlink&quot; title=&quot;Markdown学习笔记&quot;&gt;&lt;/a&gt;&lt;center&gt;Markdown学习笔记&lt;/center&gt;&lt;/h1&gt;&lt;h2 id=&quot;一-markdown的简要介绍&quot;&gt;&lt;a href=&quot;#一-markdown的简要介绍&quot; class=&quot;headerlink&quot; title=&quot;一. markdown的简要介绍&quot;&gt;&lt;/a&gt;一. markdown的简要介绍&lt;/h2&gt;&lt;p&gt;
+&amp;emsp;&amp;emsp;根据&lt;a href=&quot;http://markdown.p2hp.com/getting-started/&quot;&gt;
+Markdown中文网 &lt;/a&gt;的描述：Markdown是一种轻量级的标记语言，
+可用于将格式设置元素添加到纯文本文档中。 
+Markdown由John Gruber于2004年创建，如今已成为世界上最受欢迎的标记语言之一。&lt;br&gt;  
+&amp;emsp;&amp;emsp;本学期软件构造课和计算机系统课都有大量的实验任务, 
+在完成实验后，写一写博客,留下一些记录，既能够帮助自己整理所学所感，
+也能给后来者提供一些微不足道的教程和帮助。&lt;br&gt;
+&amp;emsp;&amp;emsp;这是我第一次认真尝试写一篇博客，才疏学浅，希望能够起到抛砖引玉的作用。
+此外，本文中由于hexo配置与markdown本身语法以及使用编辑器的种种桎梏，有些本应有效
+的markdown语法在实际呈现到blog的时候出现了与预期不符的问题，&lt;mark&gt;所以为了解决这些
+问题，我被迫使用了一些html语言&lt;/mark&gt;，但是实际上我并没有系统学习过markdown或者是html，
+所以很有可能写的不规范或者不具有可扩展性和可移植性。&lt;br&gt;
+&amp;emsp;&amp;emsp;同时为了排版方便以及演示代码的展现，大部分博客文字内容都呈现在代码块。&lt;br&gt;
+&amp;emsp;&amp;emsp;下面正式进入正文部分：
+&lt;/p&gt;</summary>
     
     
     
@@ -50,16 +59,10 @@
     <link href="https://starlooo.github.io/2021/05/02/hello-world/"/>
     <id>https://starlooo.github.io/2021/05/02/hello-world/</id>
     <published>2021-05-02T12:15:10.682Z</published>
-    <updated>2021-05-02T12:15:10.682Z</updated>
+    <updated>2021-05-10T01:05:34.355Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
     
