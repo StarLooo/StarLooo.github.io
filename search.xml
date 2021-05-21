@@ -505,7 +505,7 @@ been called, or the remove method has already been called after the last call to
 &emsp;&emsp;可以看到，在该for循环示例程序中我们先通过一系列手段声明并初始化两个长度10000的List,其中一个是顺序结构的arraylisr，</span>
 <span style="font-size: 20px">另一个是链式结构的linkedlist。接着进行100次相同的循环，每次外循环里都嵌套两个内循环，内循环里分别依次获得这</span>
 <span style="font-size: 20px">两个List各自对应下标的元素。最后分别打印出两种结构这100次内层for循环的平均执行时间。</span>
-<span style="font-size: 20px">结果为：<mark>顺序结构为0.01ms，链式结构为33.65ms</mark>,这个数据在今后我们做对比的时候还会用到。<br>
+<span style="font-size: 20px">结果为：<mark>顺序结构为0.01ms，链式结构为33.65ms</mark>,这个数据在接下来我们做对比的时候还会用到。<br>
 </span></div>
 
 <h3 id="part2–for-each循环"><a href="#part2–for-each循环" class="headerlink" title="part2–for-each循环"></a>part2–for-each循环</h3><div style="font-size: 0"><span style="font-size: 20px">
@@ -517,7 +517,7 @@ been called, or the remove method has already been called after the last call to
 <div style="font-size: 0"><span style="font-size: 20px">
 &emsp;&emsp;可以看到，该forEach循环示例程序与for循环示例程序基本一样，只不过循环的方式改成了for-each循环</span>
 <span style="font-size: 20px">最后分别打印出两种结构这100次内层for循环的平均执行时间。结果为：</span>
-<span style="font-size: 20px"><mark>顺序结构为0.18ms，链式结构为0.08ms</mark>,这个数据在今后我们做对比的时候还会用到。<br></span></div>
+<span style="font-size: 20px"><mark>顺序结构为0.18ms，链式结构为0.08ms</mark>,这个数据在接下来我们做对比的时候还会用到。<br></span></div>
 
 <h3 id="part3–迭代器"><a href="#part3–迭代器" class="headerlink" title="part3–迭代器"></a>part3–迭代器</h3><div style="font-size: 0"><span style="font-size: 20px">
 &emsp;&emsp;而我们之前讲的迭代器呢？它与for循环和forEach循环直接有什么关系，来看下面一段示例程序，</span>
@@ -528,7 +528,24 @@ been called, or the remove method has already been called after the last call to
 <div style="font-size: 0"><span style="font-size: 20px">
 &emsp;&emsp;可以看到，该迭代示例程序与for循环示例程序和for-each循环示例程序基本一样，只不过把循环改成了迭代</span>
 <span style="font-size: 20px">最后分别打印出两种结构这100次内层for循环的平均执行时间。结果为：</span>
-<span style="font-size: 20px"><mark>顺序结构为0.03ms，链式结构为0.1ms</mark>,这个数据在今后我们做对比的时候还会用到。<br></span></div>
+<span style="font-size: 20px"><mark>顺序结构为0.03ms，链式结构为0.1ms</mark>,这个数据在接下来我们做对比的时候还会用到。<br></span></div>
+
+<h3 id="part4–对比分析"><a href="#part4–对比分析" class="headerlink" title="part4–对比分析"></a>part4–对比分析</h3><div style="font-size: 0"><span style="font-size: 20px">
+&emsp;&emsp;首先根据我们在part1、part2、part3中的示例程序的运行结果，<mark>从效率上分析</mark>这三种方法的异同：<br>
+&emsp;&emsp;<mark>对于顺序结构来说，不论是直接采用for循环，还是采用for-each循环或者迭代器来遍历，效率都是很高的。</mark></span>
+<span style="font-size: 20px">原因在于：顺序结构实现的Array或者ArrayList都支持随即检索，按下标查找任何一个位置元素的效率都是常数，</span>
+<span style="font-size: 20px">而与位置无关。<br>
+&emsp;&emsp;<mark>而对于链式结构来说，采用迭代器或是for-each循环遍历的效率远远高于采用普通的for循环。</mark></span>
+<span style="font-size: 20px">原因是普通for循环中调用的get方法，对于链式结构无法采用随机访问的方式寻址，只能通过顺序访问的方式找到对应位置</span>
+<span style="font-size: 20px">的链表元素，效率与元素所在位置有关，并不是常数。而用for-each循环和迭代的时候，其内部的实现机制能够</span>
+<span style="font-size: 20px">使得访问元素的效率为常数，因此效率很高。<br>
+&emsp;&emsp;总而言之就是：</span><span style="font-size: 20px">
+<mark>对于链式结构的集合，建议采用for-each循环和迭代器进行遍历；对于顺序结构的集合，几种方法在效率上无明显差距。</mark>此外，</span>
+<span style="font-size: 20px">对于HashMap、HashSet等元素没有下标的集合，根本无法使用for循环进行遍历，就只能用后两种方法了。<br>
+&emsp;&emsp;而关于迭代和for-each循环的异同，我们可以作如下总结：<br>
+&emsp;&emsp;for-each本身的实现其实还是在内部使用的迭代器，只不过for-each循环的语法比迭代器简洁。</span><span style="font-size: 20px">
+而迭代器的优势在于，<mark>如果需要在遍历的过程中修改、删除元素的话，就必须使用迭代器。</mark><br></span></div>
+
 
 
 <h2 id="五-ListIterator简介"><a href="#五-ListIterator简介" class="headerlink" title="五. ListIterator简介"></a>五. ListIterator简介</h2><p><span style="font-size: 20px">&emsp;&emsp;To Be Continued!<br></span></p>
