@@ -549,7 +549,24 @@ been called, or the remove method has already been called after the last call to
 
 
 <h2 id="五-ListIterator简介"><a href="#五-ListIterator简介" class="headerlink" title="五. ListIterator简介"></a>五. ListIterator简介</h2><p><span style="font-size: 20px">&emsp;&emsp;To Be Continued!<br></span></p>
-<h2 id="六-参考资料"><a href="#六-参考资料" class="headerlink" title="六. 参考资料"></a>六. 参考资料</h2>]]></content>
+<h2 id="六-参考资料"><a href="#六-参考资料" class="headerlink" title="六. 参考资料"></a>六. 参考资料</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterable.html">Java JDK8官方API Iterable</a><br>
+&emsp;&emsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html">Java JDK8官方API Iterator</a><br>
+&emsp;&emsp;<a href="https://docs.oracle.com/javase/8/docs/
+api/java/util/ListIterator.html">Java JDK8官方API Iterator</a><br>
+&emsp;&emsp;<a href="https://blog.csdn.net/u011240877/article/
+details/52743564">Java 集合源码解析(1)：Iterator</a>&emsp;&emsp;作者：拭心<br>
+&emsp;&emsp;<a href="https://shixin.blog.csdn.net/article/
+details/52752589">Java 集合源码解析(2)：ListIterator</a>&emsp;&emsp;作者：拭心<br>
+&emsp;&emsp;<a href="https://blog.csdn.net/Jae_Wang/
+article/details/80526216">Java迭代器(iterator详解以及和for循环的区别)</a>&emsp;&emsp;作者：Jae_Wang<br>
+&emsp;&emsp;<a href="https://blog.csdn.net/import_sadaharu/
+article/details/78906160">List逆向遍历、反向遍历--Iterator详解</a>&emsp;&emsp;作者：萨达哈鲁君<br>
+&emsp;&emsp;<a href="https://zhuanlan.zhihu.com/p/193139479">聊聊Java中的迭代器</a>&emsp;&emsp;作者：helloworld2017<br></span>
+</div>
+
+]]></content>
       <categories>
         <category>我的笔记</category>
       </categories>
