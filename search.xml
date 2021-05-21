@@ -445,6 +445,34 @@ rather than throwing an exception.)</mark><br>
 <span style="font-size: 20px">就会像API中规定的那样，抛出NoSuchElement异常。<br>
 &emsp;&emsp;以上便是对hasNext方法的测试分析。<br></span></div>
 
+<h3 id="part3–remove方法"><a href="#part3–remove方法" class="headerlink" title="part3–remove方法"></a>part3–remove方法</h3><div style="font-size: 0"><span style="font-size: 20px">
+&emsp;&emsp;官方API中对其描述为：<br>&emsp;&emsp;<mark>Removes from the underlying collection
+the last element returned by this iterator (optional operation). This method can be called only
+once per call to next(). The behavior of an iterator is unspecified if the underlying collection is modified 
+while the iteration is in progress in any way other than by calling this method.</mark></span>
+<span style="font-size: 20px"><mark>Throws:UnsupportedOperationException if the remove operation
+is not supported by this iterator. Throws IllegalStateException if the next method has not yet 
+been called, or the remove method has already been called after the last call to the next method.</mark><br>
+&emsp;&emsp;这个说明文档非常长，里面涉及的值得注意的地方也很多，其中最关键的便是以下四点：<br>
+&emsp;&emsp;(1) remove()删除的是该迭代器最近返回的元素，即上一次调用next()返回的那一个元素。<br>
+&emsp;&emsp;(2) 每次调用next()后，之多调用一次remove()，否则会抛出IllegalStateException异常。<br>
+&emsp;&emsp;(3) 不能未经调用next()就直接调用remove()，否则也会抛出IllegalStateException异常。<br>
+&emsp;&emsp;(4) 如果在迭代正在进行中以除调用该remove()方法之外的任何方式修改这个集合，则迭代器的行为未定义。<br>
+&emsp;&emsp;我们来研究测试一下第(4)，这有助于我们理解为什么在很多集合类比如ArrayList本身拥有remove()方法的前提下，JDK</span>
+<span style="font-size: 20px">在Iterator中还要提供迭代器专有的remove()方法：<br></span></div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    @Test</span><br><span class="line">    public void removeTest1() &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; arraylist &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        arraylist.add(1);</span><br><span class="line">        arraylist.add(2);</span><br><span class="line">        arraylist.add(3);</span><br><span class="line">        Iterator&lt;Integer&gt; it;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;获得arraylist的迭代器</span><br><span class="line">        it &#x3D; arraylist.iterator();</span><br><span class="line">        &#x2F;&#x2F;迭代过程中不删除元素</span><br><span class="line">        while(it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;重新获得arraylist的迭代器</span><br><span class="line">        it &#x3D; arraylist.iterator();</span><br><span class="line">        &#x2F;&#x2F;迭代过程中正确使用Iterator专有的remove()方法删除元素</span><br><span class="line">        while(it.hasNext()) &#123;</span><br><span class="line">            System.out.println(&quot;当前迭代元素：&quot; + it.next());</span><br><span class="line">            it.remove();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;***************************************&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;此时arraylist中的所有元素都在迭代的过程中被迭代器的remove()方法正确删除了</span><br><span class="line">        System.out.println(arraylist.size());</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;***************************************&quot;);</span><br><span class="line"></span><br><span class="line">        arraylist.add(1);</span><br><span class="line">        arraylist.add(2);</span><br><span class="line">        arraylist.add(3);</span><br><span class="line">        &#x2F;&#x2F;重新获得arraylist的迭代器</span><br><span class="line">        it &#x3D; arraylist.iterator();</span><br><span class="line">        &#x2F;&#x2F;迭代过程中错误使用ArrayList类中的remove()方法删除元素，注意，这是绝对不建议的行为</span><br><span class="line">        while(it.hasNext()) &#123;</span><br><span class="line">            Integer ele &#x3D; it.next();</span><br><span class="line">            System.out.println(&quot;当前迭代元素：&quot; + ele);</span><br><span class="line">            &#x2F;&#x2F;能删除成功，但是删除成功后迭代器将产生API中未定义的行为</span><br><span class="line">            System.out.println(arraylist.remove(ele));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><span style="font-size: 20px">&emsp;&emsp;运行结果如下：<br></span><br><img src="https://z3.ax1x.com/2021/05/21/g7ZIc4.png" alt="illustration_1"></p>
+<div style="font-size: 0"><span style="font-size: 20px">
+&emsp;&emsp;可以看到，在while循环的循环判断中，我们使用it.hasNext()来判断迭代是否有下一个元素，当迭代有下个元素的时候，</span>
+<span style="font-size: 20px">我们再调用it.next()，此时可以保证it.next()返回的是下一个元素而不会抛出异常。</span>
+<span style="font-size: 20px"><mark>这也是一种标准的非常建议的迭代器的使用方法</mark>，我们会在第四节中再提及这一点。<br>
+&emsp;&emsp;根据打印结果，说明每次调用next()方法，在得到下一个元素的同时，迭代器的位置都会发生移动，使得下一次调用next()方法的时候</span>
+<span style="font-size: 20px">迭代的下一个元素(如果有的话)是当前next()返回元素的下一个。具体到示例程序中，就是依次返回1、2、3。<br>
+&emsp;&emsp;接着，程序退出while循环，说明hasNext()返回值为false，此时迭代到了末尾，已经没有下一个元素了，如果此时调用next()方法</span>
+<span style="font-size: 20px">就会像API中规定的那样，抛出NoSuchElement异常。<br>
+&emsp;&emsp;以上便是对hasNext方法的测试分析。<br></span></div>
+
 <h2 id="四-ListIterator简介"><a href="#四-ListIterator简介" class="headerlink" title="四. ListIterator简介"></a>四. ListIterator简介</h2><h2 id="五-参考资料"><a href="#五-参考资料" class="headerlink" title="五. 参考资料"></a>五. 参考资料</h2>]]></content>
       <categories>
         <category>我的笔记</category>
