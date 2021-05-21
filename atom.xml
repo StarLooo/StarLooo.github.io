@@ -6,7 +6,7 @@
   <link href="https://starlooo.github.io/atom.xml" rel="self"/>
   
   <link href="https://starlooo.github.io/"/>
-  <updated>2021-05-19T14:30:47.997Z</updated>
+  <updated>2021-05-21T01:19:29.671Z</updated>
   <id>https://starlooo.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java集合类学习笔记第一章--迭代器</title>
+    <link href="https://starlooo.github.io/2021/05/21/collection_1/"/>
+    <id>https://starlooo.github.io/2021/05/21/collection_1/</id>
+    <published>2021-05-20T16:00:00.000Z</published>
+    <updated>2021-05-21T01:19:29.671Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Java集合类学习笔记第一章–迭代器&quot;&gt;&lt;a href=&quot;#Java集合类学习笔记第一章–迭代器&quot; class=&quot;headerlink&quot; title=&quot;Java集合类学习笔记第一章–迭代器&quot;&gt;&lt;/a&gt;&lt;center&gt;Java集合类学习笔记第一章–迭代器&lt;/center&gt;&lt;/h1&gt;&lt;h2 id=&quot;一-本章概述&quot;&gt;&lt;a href=&quot;#一-本章概述&quot; class=&quot;headerlink&quot; title=&quot;一. 本章概述&quot;&gt;&lt;/a&gt;一. 本章概述&lt;/h2&gt;&lt;div style=&quot;font-size: 0&quot;&gt;
+&lt;span style=&quot;font-size: 20px&quot;&gt;
+&amp;emsp;&amp;emsp;在本章中，主要介绍Java迭代器的有关内容。&lt;br&gt;
+&amp;emsp;&amp;emsp;要讲集合，首先得讲清楚迭代器。在JDK中可以从接口声明中清楚的看到&lt;a href=&quot;https://doc
+s.oracle.com/javase/8/docs/api/java/util/Collection.html&quot;&gt;Collection&lt;/a&gt;接口继承自&lt;/span&gt;
+&lt;span style=&quot;font-size: 20px&quot;&gt;
+&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/util/Iterable.html&quot;&gt;Iterable&lt;/a&gt;接口。&lt;br&gt;
+&amp;emsp;&amp;emsp;而迭代器&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html&quot;&gt;
+Iterator&lt;/a&gt;接口&lt;/span&gt;
+&lt;span style=&quot;font-size: 20px&quot;&gt;,具体到其在各种集合类中对应的实现，为我们提供了有效地访问、遍历不同类型的集合中元素的方法。&lt;br&gt;
+&amp;emsp;&amp;emsp;因此，我把对Iterable和Iterator这两个接口的学习放到了第一章。本章的学习目的为：&lt;/span&gt;
+&lt;span style=&quot;font-size: 20px&quot;&gt;
+基本掌握Java迭代器在集合类当中的使用，同时对迭代器使用过程中的有关注意事项有一个清楚的认知。&lt;br&gt;&lt;/span&gt;&lt;/div&gt;</summary>
+    
+    
+    
+    <category term="我的笔记" scheme="https://starlooo.github.io/categories/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习笔记" scheme="https://starlooo.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Java" scheme="https://starlooo.github.io/tags/Java/"/>
+    
+    <category term="迭代器" scheme="https://starlooo.github.io/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Java集合类学习笔记序章</title>
@@ -58,41 +93,6 @@
     <category term="学习笔记" scheme="https://starlooo.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="Java" scheme="https://starlooo.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java集合类学习笔记第一章--迭代器</title>
-    <link href="https://starlooo.github.io/2021/05/19/collection_1/"/>
-    <id>https://starlooo.github.io/2021/05/19/collection_1/</id>
-    <published>2021-05-18T16:00:00.000Z</published>
-    <updated>2021-05-20T01:34:58.012Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Java集合类学习笔记第一章–迭代器&quot;&gt;&lt;a href=&quot;#Java集合类学习笔记第一章–迭代器&quot; class=&quot;headerlink&quot; title=&quot;Java集合类学习笔记第一章–迭代器&quot;&gt;&lt;/a&gt;&lt;center&gt;Java集合类学习笔记第一章–迭代器&lt;/center&gt;&lt;/h1&gt;&lt;h2 id=&quot;一-本章概述&quot;&gt;&lt;a href=&quot;#一-本章概述&quot; class=&quot;headerlink&quot; title=&quot;一. 本章概述&quot;&gt;&lt;/a&gt;一. 本章概述&lt;/h2&gt;&lt;div style=&quot;font-size: 0&quot;&gt;
-&lt;span style=&quot;font-size: 20px&quot;&gt;
-&amp;emsp;&amp;emsp;在本章中，主要介绍Java迭代器的有关内容。&lt;br&gt;
-&amp;emsp;&amp;emsp;要讲集合，首先得讲清楚迭代器。在JDK中可以从接口声明中清楚的看到&lt;a href=&quot;https://doc
-s.oracle.com/javase/8/docs/api/java/util/Collection.html&quot;&gt;Collection&lt;/a&gt;接口继承自&lt;/span&gt;
-&lt;span style=&quot;font-size: 20px&quot;&gt;
-&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/util/Iterable.html&quot;&gt;Iterable&lt;/a&gt;接口。&lt;br&gt;
-&amp;emsp;&amp;emsp;而迭代器&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html&quot;&gt;
-Iterator&lt;/a&gt;接口&lt;/span&gt;
-&lt;span style=&quot;font-size: 20px&quot;&gt;,具体到其在各种集合类中对应的实现，为我们提供了有效地访问、遍历不同类型的集合中元素的方法。&lt;br&gt;
-&amp;emsp;&amp;emsp;因此，我把对Iterable和Iterator这两个接口的学习放到了第一章。本章的学习目的为：&lt;/span&gt;
-&lt;span style=&quot;font-size: 20px&quot;&gt;
-基本掌握Java迭代器在集合类当中的使用，同时对迭代器使用过程中的有关注意事项有一个清楚的认知。&lt;br&gt;&lt;/span&gt;&lt;/div&gt;</summary>
-    
-    
-    
-    <category term="我的笔记" scheme="https://starlooo.github.io/categories/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习笔记" scheme="https://starlooo.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Java" scheme="https://starlooo.github.io/tags/Java/"/>
-    
-    <category term="迭代器" scheme="https://starlooo.github.io/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
     
   </entry>
   
