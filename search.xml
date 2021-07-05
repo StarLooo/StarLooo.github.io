@@ -576,4 +576,100 @@ article/details/78906160">List逆向遍历、反向遍历--Iterator详解</a>&em
         <tag>迭代器</tag>
       </tags>
   </entry>
+  <entry>
+    <title>软件构造课程随笔--UML类图</title>
+    <url>/2021/06/02/SuiBi1/</url>
+    <content><![CDATA[<h1 id="软件构造课程随笔–UML类图"><a href="#软件构造课程随笔–UML类图" class="headerlink" title="软件构造课程随笔–UML类图"></a><center>软件构造课程随笔–UML类图</center></h1><h2 id="一-写在前面"><a href="#一-写在前面" class="headerlink" title="一. 写在前面"></a>一. 写在前面</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在软件构造课程中，我们讲三维度，八视图。其中build-time，code-level，moment view中就包含了Class Diagram，也就是类图。<br>
+&emsp;&emsp;UML类图是一种常见的绘制JAVA类图的工具，<mark>能够看懂类图对于理解大型的JAVA程序的结构，以及理解各种各样的设计模式的思路都非常重要。</mark>
+<span style="font-size: 20px">
+首先简要介绍一下UML是什么：根据</span>
+<span style="font-size: 20px">
+<a href="https://baike.baidu.com/item/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80/3160571?fromtitle=UML&fromid=446747&fr=aladdin">
+百度百科UML词条</a>的有关内容，统一建模语言(Unified Modeling Language，UML)是一种为面向对象系统的产品进行说明、</span>
+<span style="font-size: 20px">
+可视化和编制文档的一种标准语言，是非专利的第三代建模和规约语言。UML是面向对象设计的建模工具，独立于任何具体程序设计语言。<br>
+&emsp;&emsp;UML的概念包括了UML语义（Semantics）和UML表示符（Notation）两个部分。UML语义定义了静态模型和动态模型。</span>
+<span style="font-size: 20px">
+结构模型强调系统的对象结构，入对象的类、接口、属性和关系；行为模型关注的是系统对象的行为动作，如对象的方法、交互、协作和状态。</span>
+<span style="font-size: 20px">
+UML表示符为开发者或开发工具使用这些图形符号和文本语法为系统建模提供了标准。重要内容由9种图来定义，包括用例图、类图、对象图、状态图、
+</span>
+<span style="font-size: 20px">
+构件图、部署图、协作图、交互序列图、活动图。<br>
+&emsp;&emsp;以上是对UML的简要介绍，还是比较抽象的，由于目前阶段我们并不涉及到整个UML统一建模语言的详细介绍，而是只是专注于</span>
+<span style="font-size: 20px">
+介绍UML类图这一部分内容，因此无需对UML本身做出过多的了解，这部分内容超出了软件构造课程的范围，这里我们只是简单地引入一些。</span>
+<span style="font-size: 20px">
+值得注意的是，<mark>本文旨在介绍UML类图的要素，目的是教会读者如何理解一个UML类图，并不涉及UML类图的绘制</mark>，关于如何绘制UML类图，</span>
+<span style="font-size: 20px">
+以及有关工具在最后部分，我会罗列一些参考博客，可以供想要进一步了解的读者自行学习。<br></span></span>
+
+<span id="more"></span>
+
+<h2 id="二-UML类图的基本结构"><a href="#二-UML类图的基本结构" class="headerlink" title="二. UML类图的基本结构"></a>二. UML类图的基本结构</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;UML的基本结构是：对于每个类，采用一个矩形方框来表示，整个矩形方框分为三部分的小矩形，最上方是该类的类名；中间表示该类的属性；
+</span>
+<span style="font-size: 20px">
+最下方是该类的方法。如下图所示是一个类在类图中的表示：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/R5qWHs.png" alt="illustration_1"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到，该类的类名叫做GeelyClass，有五个属性：String型的name，int型的age，double型的weight，</span>
+<span style="font-size: 20px">
+double型的height和char型的sex。以及一系列的方法。<br>
+&emsp;&emsp;我们可以看到有以下一些符号或者格式，它们的含义分别如下：<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp; ① "+"号修饰，表示属性或者方法的访问权限是public。<br>
+&emsp;&emsp; ② "-"号修饰，表示属性或者方法的访问权限是private。<br>
+&emsp;&emsp; ③ "#"号修饰，表示属性或者方法的访问权限是protected。<br>
+&emsp;&emsp; ④ "~"号修饰，表示属性或者方法的访问权限是default。<br>
+&emsp;&emsp; ⑤ 下划线修饰，表示属性或者方法是静态的。<br>
+&emsp;&emsp; ⑥ 字体为斜体，表示属性或者方法是抽象的。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;例如：GeelyClass的属性age是private的，属性sex是public static的，drink()方法是protected的等等。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对单个类的UML类图表示的信息的基本介绍，还是比较简单的。</span></div></div>
+
+<h2 id="三-UML类图中类与类的关系"><a href="#三-UML类图中类与类的关系" class="headerlink" title="三. UML类图中类与类的关系"></a>三. UML类图中类与类的关系</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;UML类图除了可以用来表示一个类的属性和方法以外，更重要的功能是来表示不同的类之间的联系，这种联系一共分为：泛化、实现、关联、</span>
+<span style="font-size: 20px">
+聚合和组合共五种。我们来一一介绍它们的概念以及是如何在UML类图被表示的：<br>
+
+</span>
+<span style="font-size: 20px">
+最下方是该类的方法。如下图所示是一个类在类图中的表示：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/R5qWHs.png" alt="illustration_1"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到，该类的类名叫做GeelyClass，有五个属性：String型的name，int型的age，double型的weight，</span>
+<span style="font-size: 20px">
+double型的height和char型的sex。以及一系列的方法。<br>
+&emsp;&emsp;我们可以看到有以下一些符号或者格式，它们的含义分别如下：<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp; ① "+"号修饰，表示属性或者方法的访问权限是public。<br>
+&emsp;&emsp; ② "-"号修饰，表示属性或者方法的访问权限是private。<br>
+&emsp;&emsp; ③ "#"号修饰，表示属性或者方法的访问权限是protected。<br>
+&emsp;&emsp; ④ "~"号修饰，表示属性或者方法的访问权限是default。<br>
+&emsp;&emsp; ⑤ 下划线修饰，表示属性或者方法是静态的。<br>
+&emsp;&emsp; ⑥ 字体为斜体，表示属性或者方法是抽象的。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;例如：GeelyClass的属性age是private的，属性sex是public static的，drink()方法是protected的等等。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对单个类的UML类图表示的信息的基本介绍，还是比较简单的。</span></div>
+]]></content>
+      <categories>
+        <category>我的笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>软件构造</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
 </search>
