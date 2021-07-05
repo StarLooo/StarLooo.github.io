@@ -6,7 +6,7 @@
   <link href="https://starlooo.github.io/atom.xml" rel="self"/>
   
   <link href="https://starlooo.github.io/"/>
-  <updated>2021-07-05T14:01:02.824Z</updated>
+  <updated>2021-07-05T14:08:55.615Z</updated>
   <id>https://starlooo.github.io/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://starlooo.github.io/2021/06/02/SuiBi1/"/>
     <id>https://starlooo.github.io/2021/06/02/SuiBi1/</id>
     <published>2021-06-01T16:00:00.000Z</published>
-    <updated>2021-07-05T14:01:02.824Z</updated>
+    <updated>2021-07-05T14:08:55.615Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;软件构造课程随笔–UML类图&quot;&gt;&lt;a href=&quot;#软件构造课程随笔–UML类图&quot; class=&quot;headerlink&quot; title=&quot;软件构造课程随笔–UML类图&quot;&gt;&lt;/a&gt;&lt;center&gt;软件构造课程随笔–UML类图&lt;/center&gt;&lt;/h1&gt;&lt;h2 id=&quot;一-写在前面&quot;&gt;&lt;a href=&quot;#一-写在前面&quot; class=&quot;headerlink&quot; title=&quot;一. 写在前面&quot;&gt;&lt;/a&gt;一. 写在前面&lt;/h2&gt;&lt;div style=&quot;font-size: 0&quot;&gt;
 &lt;span style=&quot;font-size: 20px&quot;&gt;
 &amp;emsp;&amp;emsp;在软件构造课程中，我们讲三维度，八视图。其中build-time，code-level，moment view中就包含了Class Diagram，也就是类图。&lt;br&gt;
-&amp;emsp;&amp;emsp;UML类图是一种常见的绘制JAVA类图的工具，&lt;mark&gt;能够看懂类图对于理解大型的JAVA程序的结构，以及理解各种各样的设计模式的思路都非常重要。&lt;/mark&gt;
+&amp;emsp;&amp;emsp;UML类图是一种常见的绘制JAVA类图的工具，&lt;mark&gt;能够看懂类图对于理解大型的JAVA程序的结构，以及理解各种各样的设计模式的思路都非常重要。&lt;/mark&gt;&lt;/span&gt;
 &lt;span style=&quot;font-size: 20px&quot;&gt;
 首先简要介绍一下UML是什么：根据&lt;/span&gt;
 &lt;span style=&quot;font-size: 20px&quot;&gt;
@@ -49,7 +49,7 @@ UML表示符为开发者或开发工具使用这些图形符号和文本语法�
 &lt;span style=&quot;font-size: 20px&quot;&gt;
 值得注意的是，&lt;mark&gt;本文旨在介绍UML类图的要素，目的是教会读者如何理解一个UML类图，并不涉及UML类图的绘制&lt;/mark&gt;，关于如何绘制UML类图，&lt;/span&gt;
 &lt;span style=&quot;font-size: 20px&quot;&gt;
-以及有关工具在最后部分，我会罗列一些参考博客，可以供想要进一步了解的读者自行学习。&lt;br&gt;&lt;/span&gt;&lt;/span&gt;</summary>
+以及有关工具在最后部分，我会罗列一些参考博客，可以供想要进一步了解的读者自行学习。&lt;br&gt;&lt;/span&gt;&lt;/div&gt;</summary>
     
     
     
