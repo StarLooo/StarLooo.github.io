@@ -152,29 +152,77 @@ double型的height和char型的sex。以及一系列的方法。<br>
 &emsp;&emsp;UML类图除了可以用来表示一个类的属性和方法以外，更重要的功能是来表示不同的类之间的联系，这种联系一共分为：泛化、实现、关联、</span>
 <span style="font-size: 20px">
 聚合和组合共五种。我们来一一介绍它们的概念以及是如何在UML类图被表示的：<br>
-
-</span>
+&emsp;&emsp;第一种是<mark>泛化</mark>，用于表示类与类之间的继承关系，或者接口与接口之间的继承关系，以及类与接口之间的实现关系</span>
 <span style="font-size: 20px">
-最下方是该类的方法。如下图所示是一个类在类图中的表示：</span></div>
+即泛化分为继承和实现两种类型。<mark>在UML类图中，使用空心三角+实线连接来表示继承关系而使用空心三角+虚线连接来表示实现关系</mark>，如下图所示：</span>
+</div>
 
-<p><img src="https://z3.ax1x.com/2021/07/05/R5qWHs.png" alt="illustration_1"></p>
+<p><img src="https://z3.ax1x.com/2021/07/05/RIkdbt.png" alt="illustration_2"></p>
 <div style="font-size: 0">
 <span style="font-size: 20px">
-&emsp;&emsp;可以看到，该类的类名叫做GeelyClass，有五个属性：String型的name，int型的age，double型的weight，</span>
+&emsp;&emsp;第二种是<mark>依赖</mark>，对于两个相对独立的对象，当一个对象负责构造另一个对象的实例，或者依靠另一个对象的服务时，</span>
 <span style="font-size: 20px">
-double型的height和char型的sex。以及一系列的方法。<br>
-&emsp;&emsp;我们可以看到有以下一些符号或者格式，它们的含义分别如下：<br></span>
+这两个对象之间主要体现为依赖关系。</span>
 <span style="font-size: 20px">
-&emsp;&emsp; ① "+"号修饰，表示属性或者方法的访问权限是public。<br>
-&emsp;&emsp; ② "-"号修饰，表示属性或者方法的访问权限是private。<br>
-&emsp;&emsp; ③ "#"号修饰，表示属性或者方法的访问权限是protected。<br>
-&emsp;&emsp; ④ "~"号修饰，表示属性或者方法的访问权限是default。<br>
-&emsp;&emsp; ⑤ 下划线修饰，表示属性或者方法是静态的。<br>
-&emsp;&emsp; ⑥ 字体为斜体，表示属性或者方法是抽象的。<br></span>
+<mark>在UML类图中，使用虚线箭头来表示依赖关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIAwQJ.png" alt="illustration_3"></p>
+<div style="font-size: 0">
 <span style="font-size: 20px">
-&emsp;&emsp;例如：GeelyClass的属性age是private的，属性sex是public static的，drink()方法是protected的等等。<br></span>
+&emsp;&emsp;第三种是<mark>关联</mark>，对于两个相对独立的对象，当一个对象的实例与另一个对象的一些特定实例存在固定的对应关系时，这两个对象之间为关联关系。</span>
 <span style="font-size: 20px">
-&emsp;&emsp;以上便是对单个类的UML类图表示的信息的基本介绍，还是比较简单的。</span></div>
+<mark>在UML类图中，使用实线箭头来表示关联关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIABLR.png" alt="illustration_4"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;第四种是<mark>聚合</mark>，表示一种弱的拥有关系，即has-a的关系，体现的是A对象可以包含B对象，但B对象不是A对象的一部分，两个对象具有各自的生命周期。</span>
+<span style="font-size: 20px">
+<mark>在UML类图中，使用空心的菱形+实线箭头来表示聚合关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIATTP.png" alt="illustration_5"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;第五种是<mark>组合</mark>，组合是一种强的拥有关系，是一种contains-a的关系，体现了严格的部分和整体关系，部分和整体的生命周期一样。</span>
+<span style="font-size: 20px">
+<mark>在UML类图中，使用实心的菱形+实线箭头来表示聚合关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIEemR.png" alt="illustration_6"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对UML类图是如何表示类与类之间关系的介绍。</span></div>
+
+<h2 id="四-一个举例"><a href="#四-一个举例" class="headerlink" title="四. 一个举例"></a>四. 一个举例</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;以老师在第一讲PPT给出的类图为示例，总结一下：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIEWNV.png" alt="illustration_7"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;如上图所示，我们可以发现在这个大UML类图里，我们之前讲的都有涉及到。<br>
+&emsp;&emsp;首先是属性和方法，可以看到Generator接口</span>
+<span style="font-size: 20px">
+没有属性，符合其接口的特征；其所有方法都是用"+"修饰的，代表访问权限public，并且都是斜体的，表示这些方法是抽象的，同样也符合接口的定义。</span>
+<span style="font-size: 20px">
+然后我们再看看AbstractConvert抽象类，可以看到它的类名是斜体的，并且有两个"-"修饰的私有属性。</span><br>
+<span style="font-size: 20px">
+&emsp;&emsp;然后是彼此之间的关系，可以看到抽象类AbstractGenerator实现了Generator接口，在类图中用空心三角+虚线表示；而它又有两个子类继承它，在类图中用空心三角+实线表示</span>
+<span style="font-size: 20px">
+除此之外，我们还可以看到，AbstractConvertor抽象类与Generator接口之间有组合关系，在类图中用实心菱形+实线表示。</span><br>
+<span style="font-size: 20px">
+&emsp;&emsp;该UML类图中没有涉及到依赖关系、关联关系和聚合关系。</span></div>
+
+<h2 id="四-一个实用的画UML类图的工具"><a href="#四-一个实用的画UML类图的工具" class="headerlink" title="四. 一个实用的画UML类图的工具"></a>四. 一个实用的画UML类图的工具</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;最后推荐一个方便的<a href="https://www.processon.com/">画图网站</a>，除了可以画UML图外，还有许多其他的强大功能。请有兴趣的读者自行摸索！
+</span>
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对UML类图的简单介绍，本篇随笔到此结束。感谢阅读！</span>
+</div>
 ]]></content>
       <categories>
         <category>我的笔记</category>
