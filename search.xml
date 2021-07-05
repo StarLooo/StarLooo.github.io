@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java集合类学习笔记序章</title>
+    <url>/2021/05/19/collection_0/</url>
+    <content><![CDATA[<h1 id="Java集合类学习笔记序章"><a href="#Java集合类学习笔记序章" class="headerlink" title="Java集合类学习笔记序章"></a><center>Java集合类学习笔记序章</center></h1><h2 id="一-系列简介"><a href="#一-系列简介" class="headerlink" title="一. 系列简介"></a>一. 系列简介</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在软件构造课程的学习过程中，对Java编程语言的不断</span>
+<span style="font-size: 20px">
+学习和练习是至关重要的。其中，通过对于Java JDK当中提供的各种各</span>
+<span style="font-size: 20px">
+样的容器的使用方法的学习能够极大地提高我们的编程能力。而JDK中</span>
+<span style="font-size: 20px">
+最常用的一类容器，莫过于<a href="https://docs.oracle.com/javase
+/8/docs/api/java/util/Collection.html">集合Collection</a>了。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;因此，在学习Java Collection接口以及各个常见的实现类的过程当</span>
+<span style="font-size: 20px">
+中，撰写一系列博客来记录学习的过程和心得体会是有必要的。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;然而，由于Java集合及其各种实现类源码本身涉及到复杂的Java语法，</span>
+<span style="font-size: 20px">
+比如多线程、注解等，以及其具体实现的精妙性、复杂性，<mark>很难保证该系列博客中记录的我个人的理解是正确无误的。</mark><br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;此外，受限于个人对Java的理解水平有限，以及时间精力等多重因素的</span>
+<span style="font-size: 20px">
+限制，所以<mark>一些细节的部分无法做到面面俱到，只是对一些学习到的知识随手记录</mark>，</span>
+<span style="font-size: 20px">
+系统性和逻辑性都略有不足。可做抛砖引玉之用。<br></span>
+</div>
+
+<span id="more"></span>
+
+<h2 id="二-系列博客的内容组成"><a href="#二-系列博客的内容组成" class="headerlink" title="二. 系列博客的内容组成"></a>二. 系列博客的内容组成</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在我的预想中，接下来这一系列博客将基本按以下的方式进行组织： <br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;首先是命名，除了本章序章以外，基本按照第一章XX、第二章XX这样的方式</span>
+<span style="font-size: 20px">
+依次命名下去。其中XX是具体对此章内容的总体概括。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;然后是具体的各章内容，目前是这样计划的：<br>
+&emsp;&emsp;(1)<br>&emsp;&emsp;&emsp;&emsp;首先是<a href="http://localhost:4000/2021/05/19/collection_0/">序章</a></span>
+<span style="font-size: 20px">对系列博客的基本介绍以及为一些关键的说明作预留，以及一些可能<br></span>
+<span style="font-size: 20px">&emsp;&emsp;有用的参考的资料的整理。<br>
+&emsp;&emsp;(2)<br>&emsp;&emsp;&emsp;&emsp;然后是<a href="http://localhost:4000/2021/05/19/collection_1/">第一章</a></span>
+<span style="font-size: 20px">，用来介绍Java迭代器接口Iterator和可迭代接口Iterable，他们对于<br></span>
+<span style="font-size: 20px">&emsp;&emsp;后续集合的遍历非常有用，因此在第一章，我们尽可能将</span>
+<span style="font-size: 20px">其常见的使用方法一网打尽。<br>
+&emsp;&emsp;(3)<br>&emsp;&emsp;&emsp;&emsp;然后是第三章，正式进入对集合的整理，在这一章我们将</span>
+<span style="font-size: 20px">对Collection接口中的所<br>
+&emsp;&emsp;有抽象方法做详细理解，并通过其各种实现类进行相应的测试。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;(4)<br>&emsp;&emsp;&emsp;&emsp;然后是第三、四、五章，在这几章我们将</span>
+<span style="font-size: 20px">对Collection接口的常见实现类中的中的<br>
+&emsp;&emsp;常用方法做详细理解，并进行相应的测试，也会涉及到相当一些源码的阅读分析。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;(5)<br>&emsp;&emsp;&emsp;&emsp;To Be Continued!<br></span>
+</div>
+
+<h2 id="三-参考资料汇总"><a href="#三-参考资料汇总" class="headerlink" title="三. 参考资料汇总"></a>三. 参考资料汇总</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;<a href="https://docs.oracle.com/javase/8/docs/api/">Java JDK8官方API英文版</a><br>
+&emsp;&emsp;<a href="https://www.matools.com/api/java8">Java JDK8官方API中文版</a></span>
+<span style="font-size: 20px"><mark>(注意，机翻质量极低，不建议大量使用)</mark><br>
+&emsp;&emsp;<a href="https://blog.csdn.net/u011240877/category_6447444.html">
+一系列关于Java集合框架的原理分析博客</a>&emsp;&emsp;作者：拭心<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;</span>
+<span style="font-size: 20px">
+&emsp;&emsp;</span>
+<span style="font-size: 20px">
+&emsp;&emsp;<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;</span>
+<span style="font-size: 20px">
+&emsp;&emsp;<br></span>
+</div>
+
+
+
+]]></content>
+      <categories>
+        <category>我的笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/05/02/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -266,97 +354,9 @@ own程序的代码块来演示：
         <category>我的笔记</category>
       </categories>
       <tags>
+        <tag>学习笔记</tag>
         <tag>测试</tag>
         <tag>markdown</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java集合类学习笔记序章</title>
-    <url>/2021/05/19/collection_0/</url>
-    <content><![CDATA[<h1 id="Java集合类学习笔记序章"><a href="#Java集合类学习笔记序章" class="headerlink" title="Java集合类学习笔记序章"></a><center>Java集合类学习笔记序章</center></h1><h2 id="一-系列简介"><a href="#一-系列简介" class="headerlink" title="一. 系列简介"></a>一. 系列简介</h2><div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;在软件构造课程的学习过程中，对Java编程语言的不断</span>
-<span style="font-size: 20px">
-学习和练习是至关重要的。其中，通过对于Java JDK当中提供的各种各</span>
-<span style="font-size: 20px">
-样的容器的使用方法的学习能够极大地提高我们的编程能力。而JDK中</span>
-<span style="font-size: 20px">
-最常用的一类容器，莫过于<a href="https://docs.oracle.com/javase
-/8/docs/api/java/util/Collection.html">集合Collection</a>了。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;因此，在学习Java Collection接口以及各个常见的实现类的过程当</span>
-<span style="font-size: 20px">
-中，撰写一系列博客来记录学习的过程和心得体会是有必要的。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;然而，由于Java集合及其各种实现类源码本身涉及到复杂的Java语法，</span>
-<span style="font-size: 20px">
-比如多线程、注解等，以及其具体实现的精妙性、复杂性，<mark>很难保证该系列博客中记录的我个人的理解是正确无误的。</mark><br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;此外，受限于个人对Java的理解水平有限，以及时间精力等多重因素的</span>
-<span style="font-size: 20px">
-限制，所以<mark>一些细节的部分无法做到面面俱到，只是对一些学习到的知识随手记录</mark>，</span>
-<span style="font-size: 20px">
-系统性和逻辑性都略有不足。可做抛砖引玉之用。<br></span>
-</div>
-
-<span id="more"></span>
-
-<h2 id="二-系列博客的内容组成"><a href="#二-系列博客的内容组成" class="headerlink" title="二. 系列博客的内容组成"></a>二. 系列博客的内容组成</h2><div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;在我的预想中，接下来这一系列博客将基本按以下的方式进行组织： <br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;首先是命名，除了本章序章以外，基本按照第一章XX、第二章XX这样的方式</span>
-<span style="font-size: 20px">
-依次命名下去。其中XX是具体对此章内容的总体概括。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;然后是具体的各章内容，目前是这样计划的：<br>
-&emsp;&emsp;(1)<br>&emsp;&emsp;&emsp;&emsp;首先是<a href="http://localhost:4000/2021/05/19/collection_0/">序章</a></span>
-<span style="font-size: 20px">对系列博客的基本介绍以及为一些关键的说明作预留，以及一些可能<br></span>
-<span style="font-size: 20px">&emsp;&emsp;有用的参考的资料的整理。<br>
-&emsp;&emsp;(2)<br>&emsp;&emsp;&emsp;&emsp;然后是<a href="http://localhost:4000/2021/05/19/collection_1/">第一章</a></span>
-<span style="font-size: 20px">，用来介绍Java迭代器接口Iterator和可迭代接口Iterable，他们对于<br></span>
-<span style="font-size: 20px">&emsp;&emsp;后续集合的遍历非常有用，因此在第一章，我们尽可能将</span>
-<span style="font-size: 20px">其常见的使用方法一网打尽。<br>
-&emsp;&emsp;(3)<br>&emsp;&emsp;&emsp;&emsp;然后是第三章，正式进入对集合的整理，在这一章我们将</span>
-<span style="font-size: 20px">对Collection接口中的所<br>
-&emsp;&emsp;有抽象方法做详细理解，并通过其各种实现类进行相应的测试。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;(4)<br>&emsp;&emsp;&emsp;&emsp;然后是第三、四、五章，在这几章我们将</span>
-<span style="font-size: 20px">对Collection接口的常见实现类中的中的<br>
-&emsp;&emsp;常用方法做详细理解，并进行相应的测试，也会涉及到相当一些源码的阅读分析。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;(5)<br>&emsp;&emsp;&emsp;&emsp;To Be Continued!<br></span>
-</div>
-
-<h2 id="三-参考资料汇总"><a href="#三-参考资料汇总" class="headerlink" title="三. 参考资料汇总"></a>三. 参考资料汇总</h2><div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;<a href="https://docs.oracle.com/javase/8/docs/api/">Java JDK8官方API英文版</a><br>
-&emsp;&emsp;<a href="https://www.matools.com/api/java8">Java JDK8官方API中文版</a></span>
-<span style="font-size: 20px"><mark>(注意，机翻质量极低，不建议大量使用)</mark><br>
-&emsp;&emsp;<a href="https://blog.csdn.net/u011240877/category_6447444.html">
-一系列关于Java集合框架的原理分析博客</a>&emsp;&emsp;作者：拭心<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;</span>
-<span style="font-size: 20px">
-&emsp;&emsp;</span>
-<span style="font-size: 20px">
-&emsp;&emsp;<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;</span>
-<span style="font-size: 20px">
-&emsp;&emsp;<br></span>
-</div>
-
-
-
-]]></content>
-      <categories>
-        <category>我的笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -571,8 +571,8 @@ article/details/78906160">List逆向遍历、反向遍历--Iterator详解</a>&em
         <category>我的笔记</category>
       </categories>
       <tags>
-        <tag>学习笔记</tag>
         <tag>Java</tag>
+        <tag>学习笔记</tag>
         <tag>迭代器</tag>
       </tags>
   </entry>
