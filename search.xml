@@ -829,6 +829,32 @@ equals()方法时可能会用到的。<br>
 我们来看看其是如何帮我们自动生成equals()方法的：<br>
 &emsp;&emsp;首先在SuperClass代码所在的页面按下相应快捷键(我在IDEA中设置为ctrl+shift+s)，会弹出一个如下图所示的菜单。
 </span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/06/R78V1J.md.png" alt="P1"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;选择其中的equals() and hashCode()点击进入如下图所示的窗口：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/06/R78gun.png" alt="P2"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在该窗口里有三个可选的部分：<br>
+&emsp;&emsp;首先是选择Template模板，即选择按照什么样的代码风格来自动生成。
+</span></div>
+
+
+<p><img src="https://z3.ax1x.com/2021/07/06/R7GS8e.png" alt="P3"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到有IDEA的默认选择模板和Java 7+可用的模板，其区别主要在于Java 7+引入了Objects工具类，</span>
+<span style="font-size: 20px">
+里面提供的Objects.equals()和Objects.hash()两个静态方法可以用来很方便的重写Object类的equals()方法，鉴于课程使用的JDK环境为JDK 8及以上，</span>
+<span style="font-size: 20px">
+所以就选择采用这种模板来重写了。<br>
+&emsp;&emsp;
+</span>
+</div>
+
 ]]></content>
       <categories>
         <category>我的笔记</category>
