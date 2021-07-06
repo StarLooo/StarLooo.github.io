@@ -721,4 +721,60 @@ article/details/78906160">List逆向遍历、反向遍历--Iterator详解</a>&em
         <tag>迭代器</tag>
       </tags>
   </entry>
+  <entry>
+    <title>软件构造课程随笔--IDEA是如何帮你重写equals()方法的？</title>
+    <url>/2021/06/19/equals/</url>
+    <content><![CDATA[<h1 id="IDEA是如何帮你重写equals-方法的？"><a href="#IDEA是如何帮你重写equals-方法的？" class="headerlink" title="IDEA是如何帮你重写equals()方法的？"></a><center>IDEA是如何帮你重写equals()方法的？</center></h1><h2 id="一-写在前面"><a href="#一-写在前面" class="headerlink" title="一. 写在前面"></a>一. 写在前面</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在本软件构造课程的第8讲中，我们学习了如何判断两个对象的等价性，了解了什么是引用等价性(在Java中使用==符号判断)以及什么是</span>
+<span style="font-size: 20px">
+行为等价性(在Java中使用equals()方法来判断)。以及对于immutable的对象，我们应当重写其继承自Object类的equals()方法和hashCode()方法，
+并且在其中实现观察等价性或者行为等价性(对immutable对象来说观察等价性就是行为等价性)；而对于mutable对象来说，最好是不对其</span>
+<span style="font-size: 20px">
+继承自Object类的equals()方法和hashCode()方法进行重写，就让它用默认的==来实现行为等价性。<br>
+&emsp;&emsp;在平时写Java代码的时候，相信大多数同学跟我一样，因为不论使用的IDE是IDEA还是Eclipse，都提供了自动重写equals()和hashCode()方法</span>
+<span style="font-size: 20px">
+的快捷键，所以大家平时应该都不是自己手动重写equals()和hashCode()方法而是依靠IDE帮我们自动生成。这当然是不错的，毕竟</span>
+<span style="font-size: 20px">
+现代IDE的一大工作就是尽可能减少程序员的工作量。不过，在开心的使用IDE的代码自动生成功能之前，我们还是需要仔细了解其原理，不然不管是</span>
+<span style="font-size: 20px">
+期末考试还是以后面试，需要我们手写代码的时候，就露陷了。<br>
+&emsp;&emsp;因此，<mark>本篇博客旨在向大家介绍IDE(以IDEA为例，Eclipse同理)是怎么帮我们重写equals()方法的</mark>。特别是考虑到</span>
+<span style="font-size: 20px">
+调查身边同学，问他们是否了解IDE是如何自动生成equals()方法的时候，大家都不是很了解，就更加坚定了我要写一篇这样的博客的决心。希望能对大家有所帮助。<br>
+&emsp;&emsp;在进入正文之前，<mark>首先给出本文中用来进行测试的三个类的代码，他们分别是父类SuperClass、子类SubClassA和SubClassB</mark>，代码分别如下：
+</span></div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F;SuperClass类的代码</span><br><span class="line">    public class SuperClass &#123;</span><br><span class="line">    String name;</span><br><span class="line">    int elseSuperFields;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;superClass的构造器</span><br><span class="line">    public SuperClass(String name, int elseSuperFields) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.elseSuperFields &#x3D; elseSuperFields;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;IDEA为superClass自动生成的equals()方法，内部使用了instanceof关键字</span><br><span class="line">    @Override</span><br><span class="line">    public boolean equals(Object o) &#123;</span><br><span class="line">        if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">        if (!(o instanceof SuperClass)) return false;</span><br><span class="line">        SuperClass that &#x3D; (SuperClass) o;</span><br><span class="line">        return elseSuperFields &#x3D;&#x3D; that.elseSuperFields &amp;&amp; Objects.equals(name, that.name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;IDEA为superClass自动生成的hashCode()方法，如果有机会下一篇博客会介绍以下IDEA是如何自动生成hashCode()方法的代码的</span><br><span class="line">    @Override</span><br><span class="line">    public int hashCode() &#123;</span><br><span class="line">        return Objects.hash(name, elseSuperFields);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F;SubClassA类的代码</span><br><span class="line">    public class SubClassA extends SuperClass &#123;</span><br><span class="line">    &#x2F;&#x2F;extends String name from SuperClass</span><br><span class="line">    &#x2F;&#x2F;extends int elseSuperFields from SuperClass</span><br><span class="line">    int elseSubAFields;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;SubClassA的构造器</span><br><span class="line">    public SubClassA(String name, int elseSuperFields, int elseSubAFields) &#123;</span><br><span class="line">        super(name, elseSuperFields);</span><br><span class="line">        this.elseSubAFields &#x3D; elseSubAFields;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;IDEA为SubClassA自动生成的equals()方法，内部使用了instanceof关键字</span><br><span class="line">    @Override</span><br><span class="line">    public boolean equals(Object o) &#123;</span><br><span class="line">        if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">        if (!(o instanceof SubClassA)) return false;</span><br><span class="line">        if (!super.equals(o)) return false;</span><br><span class="line">        SubClassA subClassA &#x3D; (SubClassA) o;</span><br><span class="line">        return elseSubAFields &#x3D;&#x3D; subClassA.elseSubAFields;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int hashCode() &#123;</span><br><span class="line">        return Objects.hash(super.hashCode(), elseSubAFields);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F;SubClassB类的代码</span><br><span class="line">    public class SubClassB extends SuperClass &#123;</span><br><span class="line">    &#x2F;&#x2F;extends String name from SuperClass</span><br><span class="line">    &#x2F;&#x2F;extends int elseSuperFields from SuperClass</span><br><span class="line">    int elseSubBFields;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;SubClassB的构造器</span><br><span class="line">    public SubClassB(String name, int elseSuperFields, int elseSubBFields) &#123;</span><br><span class="line">        super(name, elseSuperFields);</span><br><span class="line">        this.elseSubBFields &#x3D; elseSubBFields;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;IDEA为SubClassB自动生成的equals()方法，内部使用了instanceof关键字</span><br><span class="line">    @Override</span><br><span class="line">    public boolean equals(Object o) &#123;</span><br><span class="line">        if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">        if (!(o instanceof SubClassB)) return false;</span><br><span class="line">        if (!super.equals(o)) return false;</span><br><span class="line">        SubClassB subClassB &#x3D; (SubClassB) o;</span><br><span class="line">        return elseSubBFields &#x3D;&#x3D; subClassB.elseSubBFields;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int hashCode() &#123;</span><br><span class="line">        return Objects.hash(super.hashCode(), elseSubBFields);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<span id="more"></span>
+
+<h2 id="二-instanceof关键字"><a href="#二-instanceof关键字" class="headerlink" title="二. instanceof关键字"></a>二. instanceof关键字</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在具体介绍IDE是如何自动生成equals()方法之前，首先需要介绍Java当中的一个运算符instanceof和一个方法getClass()方法，它们是IDE在实现</span>
+<span style="font-size: 20px">
+equals()方法时可能会用到的。<br>
+&emsp;&emsp;首先是instanceof运算符，它的语法为：a instanceof ClassA，其中：a是一个对象而不能是基本数据类型，ClassA是一个类的类名。</span>
+<span style="font-size: 20px">
+当a是ClassA类的对象(包括a是ClassA的构造器构造出的对象，或者是ClassA的任何一个直接或者间接子类的对象，以及当ClassA是接口，a是该接口的实现类的对象等情况)</span>
+<span style="font-size: 20px">
+的时候该运算结果为true，否则为false。<br>
+&emsp;&emsp;我们来测试一下，测试代码如下，测试结果已经以注释的形式写在了源代码中：</span></div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void instanceTest() &#123;</span><br><span class="line">    SuperClass super1 &#x3D; new SuperClass(&quot;NAME&quot;, 1);</span><br><span class="line">    SuperClass super2 &#x3D; new SubClassA(&quot;NAME&quot;, 1, 100);</span><br><span class="line">    SuperClass super3 &#x3D; new SubClassB(&quot;NAME&quot;, 1, 101);</span><br><span class="line"></span><br><span class="line">    SubClassA subA &#x3D; new SubClassA(&quot;NAME&quot;, 1, 102);</span><br><span class="line">    SubClassB subB &#x3D; new SubClassB(&quot;NAME&quot;, 1, 104);</span><br><span class="line"></span><br><span class="line">    System.out.println(super1 instanceof Object); &#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super1 instanceof SuperClass);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super1 instanceof SubClassA);&#x2F;&#x2F;false</span><br><span class="line">    System.out.println(super1 instanceof SubClassB);&#x2F;&#x2F;false</span><br><span class="line">    System.out.println(&quot;************************************&quot;);</span><br><span class="line"></span><br><span class="line">    System.out.println(super2 instanceof Object);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super2 instanceof SuperClass);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super2 instanceof SubClassA);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super2 instanceof SubClassB);&#x2F;&#x2F;false</span><br><span class="line">    System.out.println(&quot;************************************&quot;);</span><br><span class="line"></span><br><span class="line">    System.out.println(super3 instanceof Object);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super3 instanceof SuperClass);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super3 instanceof SubClassA);&#x2F;&#x2F;false</span><br><span class="line">    System.out.println(super3 instanceof SubClassB);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(&quot;************************************&quot;);</span><br><span class="line"></span><br><span class="line">    System.out.println(subA instanceof Object);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(subA instanceof SuperClass);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(subA instanceof SubClassA);&#x2F;&#x2F;true</span><br><span class="line">    &#x2F;&#x2F;System.out.println(subA instanceof SubClassB);  &#x2F;&#x2F;编译报错：Inconvertible types; cannot cast &#39;UsedClasses.SubClassA&#39; to &#39;UsedClasses.SubClassB&#39;</span><br><span class="line">    System.out.println(&quot;************************************&quot;);</span><br><span class="line"></span><br><span class="line">    System.out.println(subB instanceof Object);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(subB instanceof SuperClass);&#x2F;&#x2F;true</span><br><span class="line">    &#x2F;&#x2F;System.out.println(subB instanceof SubClassA);&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(subB instanceof SubClassB);  &#x2F;&#x2F;编译报错：Inconvertible types; cannot cast &#39;UsedClasses.SubClassB&#39; to &#39;UsedClasses.SubClassA&#39;</span><br><span class="line">    System.out.println(&quot;************************************&quot;);</span><br><span class="line"></span><br><span class="line">    System.out.println(null instanceof Object);&#x2F;&#x2F;false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>我的笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>软件构造</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
 </search>
