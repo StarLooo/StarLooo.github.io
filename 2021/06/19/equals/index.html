@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">3k</span>
+            <span class="post-count">3.3k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">13 min</span>
+            <span class="post-count">14 min</span>
         </span>
     </span>
 </div>
@@ -235,9 +235,9 @@ equals()方法时可能会用到的。<br>
 里面提供的Objects.equals()和Objects.hash()两个静态方法可以用来很方便的重写Object类的equals()方法，鉴于课程使用的JDK环境为JDK 8及以上，</span>
 <span style="font-size: 20px">
 所以就选择采用这种模板来重写了。<br>
-&emsp;&emsp;<mark>第二个可选部分并不建议，正如其下方提示所言，这种实现可能会违背之前我们所说的equals()方法的5条性质</mark>。事实上，在该实现方式中，</span>
+&emsp;&emsp;<mark>第二个可选部分并不建议，正如其下方提示所言，这种实现可能会出现类似于违背之前我们所说的equals()方法的5条性质的结果</mark>。事实上，在该实现方式中，</span>
 <span style="font-size: 20px">
-正是因为使用了instanceof运算符才导致可能违反规约的，之后我们来实际测试一下，这里我们先讲完让IDEA帮我们重写的完整操作步骤。<br>
+正是因为使用了instanceof运算符才导致可能出现不合预期的，之后我们来实际测试一下，这里我们先讲完让IDEA帮我们重写的完整操作步骤。<br>
 &emsp;&emsp;第三个可选部分是采用相应的get方法获取属性的值，一般无特殊需求时按照默认不选择该选项即可。<br>
 &emsp;&emsp;接下来按照再选择参与equals()方法判断的属性域，自动生成equals()代码只是简单地依次进行属性域的比较(基本数据类型用==，对象用Objects.equals())，</span>
 <span style="font-size: 20px">
@@ -261,6 +261,30 @@ equals()方法时可能会用到的。<br>
 &emsp;&emsp;最终，若选择了使用instanceof关键字的生成方式的话，按照上述步骤IDEA为SuperClass、SubClassA重写的euqlas()方法如下：</span></div>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;IDEA为SuperClass重写的equals()方法</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SuperClass)) return false;</span><br><span class="line">    SuperClass that &#x3D; (SuperClass) o;</span><br><span class="line">    return elseSuperFields &#x3D;&#x3D; that.elseSuperFields &amp;&amp; Objects.equals(name, that.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;IDEA为SubClassA重写的equals()方法</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SubClassA)) return false;</span><br><span class="line">    if (!super.equals(o)) return false;</span><br><span class="line">    SubClassA subClassA &#x3D; (SubClassA) o;</span><br><span class="line">    return elseSubAFields &#x3D;&#x3D; subClassA.elseSubAFields;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;事实上，这种写法正如之前选择的时候IDEA的提示那样，会违反equals()方法的规约，让我们来看一看测试代码：</span></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void equalsTest() &#123;</span><br><span class="line">    SuperClass super1 &#x3D; new SuperClass(&quot;NAME&quot;, 1);</span><br><span class="line">    SuperClass super2 &#x3D; new SubClassA(&quot;NAME&quot;, 1, 101);</span><br><span class="line"></span><br><span class="line">    SubClassA subA &#x3D; new SubClassA(&quot;NAME&quot;, 1, 101);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    System.out.println(super1.equals(super2));&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(super2.equals(super1));&#x2F;&#x2F;false</span><br><span class="line"></span><br><span class="line">    System.out.println(super1.equals(subA));&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(subA.equals(super1));&#x2F;&#x2F;false</span><br><span class="line"></span><br><span class="line">    System.out.println(super2.equals(subA));&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(subA.equals(super2));&#x2F;&#x2F;true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到，super1.equals(super2)==true但super2.equals(super1)==false违法了对称性的规约。</span>
+<span style="font-size: 20px">
+这是因为重写Override是运行时才决定调用的具体是父类还是子类的equals()方法，此时super1的静态类型和动态类型都是为SuperClass，super1.equals(super2)</span>
+<span style="font-size: 20px">
+调用的是SuperClass中的equals()方法，此时只比较name和elseSuperFiled两个属性域是否相同，super1和super2在这两个属性域是相同的，所以返回true。</span>
+<span style="font-size: 20px">
+但是super2的静态类型为SuperClass，动态类型为SubClassA，super2.equals(super1)调用的是SubClassA的equals()方法，因为super2 instanceof SubClassA==false</span>
+<span style="font-size: 20px">
+所以super2.equals(super1)的结果为false。同理super1.equals(subA)==true但subA.equals(super1)==false也是合运行时类型有关。<br>
+&emsp;&emsp;综上得出结论：<mark>重写hashCode()的时候尽量不要使用instanceof关键字，而是选择getClass()式的重写方法。</mark>
+</span></div>
+
+
+
+
 
  
       <!-- reward -->
