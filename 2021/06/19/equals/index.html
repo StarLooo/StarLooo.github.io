@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.8k</span>
+            <span class="post-count">3k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">12 min</span>
+            <span class="post-count">13 min</span>
         </span>
     </span>
 </div>
@@ -251,6 +251,17 @@ equals()方法时可能会用到的。<br>
 如下图所示：</span></div>
 
 <p><img src="https://z3.ax1x.com/2021/07/06/R7tOQe.png" alt="P5.png"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;最后是选择哪些对象属性域保证非null，一般不选，如下图所示：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/06/R7NFSS.png" alt="P5.png"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;最终，若选择了使用instanceof关键字的生成方式的话，按照上述步骤IDEA为SuperClass、SubClassA重写的euqlas()方法如下：</span></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;IDEA为SuperClass重写的equals()方法</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SuperClass)) return false;</span><br><span class="line">    SuperClass that &#x3D; (SuperClass) o;</span><br><span class="line">    return elseSuperFields &#x3D;&#x3D; that.elseSuperFields &amp;&amp; Objects.equals(name, that.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;IDEA为SubClassA重写的equals()方法</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SubClassA)) return false;</span><br><span class="line">    if (!super.equals(o)) return false;</span><br><span class="line">    SubClassA subClassA &#x3D; (SubClassA) o;</span><br><span class="line">    return elseSubAFields &#x3D;&#x3D; subClassA.elseSubAFields;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
