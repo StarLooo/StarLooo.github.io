@@ -874,9 +874,9 @@ equals()方法时可能会用到的。<br>
 <p><img src="https://z3.ax1x.com/2021/07/06/R7NFSS.png" alt="P5.png"></p>
 <div style="font-size: 0">
 <span style="font-size: 20px">
-&emsp;&emsp;最终，若选择了使用instanceof关键字的生成方式的话，按照上述步骤IDEA为SuperClass、SubClassA重写的euqlas()方法如下：</span></div>
+&emsp;&emsp;最终，若选择了使用instanceof关键字的生成方式的话，按照上述步骤IDEA为SuperClass、SubClassA重写的equals()方法如下：</span></div>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;IDEA为SuperClass重写的equals()方法</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SuperClass)) return false;</span><br><span class="line">    SuperClass that &#x3D; (SuperClass) o;</span><br><span class="line">    return elseSuperFields &#x3D;&#x3D; that.elseSuperFields &amp;&amp; Objects.equals(name, that.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;IDEA为SubClassA重写的equals()方法</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SubClassA)) return false;</span><br><span class="line">    if (!super.equals(o)) return false;</span><br><span class="line">    SubClassA subClassA &#x3D; (SubClassA) o;</span><br><span class="line">    return elseSubAFields &#x3D;&#x3D; subClassA.elseSubAFields;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;IDEA为SuperClass重写的equals()方法，instanceof运算符实现</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SuperClass)) return false;</span><br><span class="line">    SuperClass that &#x3D; (SuperClass) o;</span><br><span class="line">    return elseSuperFields &#x3D;&#x3D; that.elseSuperFields &amp;&amp; Objects.equals(name, that.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;IDEA为SubClassA重写的equals()方法，instanceof运算符实现</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (!(o instanceof SubClassA)) return false;</span><br><span class="line">    if (!super.equals(o)) return false;</span><br><span class="line">    SubClassA subClassA &#x3D; (SubClassA) o;</span><br><span class="line">    return elseSubAFields &#x3D;&#x3D; subClassA.elseSubAFields;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <div style="font-size: 0">
 <span style="font-size: 20px">
@@ -895,13 +895,22 @@ equals()方法时可能会用到的。<br>
 但是super2的静态类型为SuperClass，动态类型为SubClassA，super2.equals(super1)调用的是SubClassA的equals()方法，因为super2 instanceof SubClassA==false</span>
 <span style="font-size: 20px">
 所以super2.equals(super1)的结果为false。同理super1.equals(subA)==true但subA.equals(super1)==false也是合运行时类型有关。<br>
-&emsp;&emsp;综上得出结论：<mark>重写hashCode()的时候尽量不要使用instanceof关键字，而是选择getClass()式的重写方法。</mark>
+&emsp;&emsp;综上得出结论：<mark>重写hashCode()的时候尽量不要使用instanceof关键字，而是选择getClass()式的重写方法。</mark><br>
+&emsp;&emsp;以下是IDEA采用getClass()实现SuperClass和SubClassA的equals()方法的代码：
 </span></div>
 
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;IDEA为SuperClass重写的equals()方法，getClass()实现</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (o &#x3D;&#x3D; null || getClass() !&#x3D; o.getClass()) return false;</span><br><span class="line">    SuperClass that &#x3D; (SuperClass) o;</span><br><span class="line">    return elseSuperFields &#x3D;&#x3D; that.elseSuperFields &amp;&amp; Objects.equals(name, that.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;IDEA为SubClassA重写的equals()方法，getClass()实现</span><br><span class="line">@Override</span><br><span class="line">public boolean equals(Object o) &#123;</span><br><span class="line">    if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">    if (o &#x3D;&#x3D; null || getClass() !&#x3D; o.getClass()) return false;</span><br><span class="line">    if (!super.equals(o)) return false;</span><br><span class="line">    SubClassA subClassA &#x3D; (SubClassA) o;</span><br><span class="line">    return elseSubAFields &#x3D;&#x3D; subClassA.elseSubAFields;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以总结出其通用步骤为：<br>
+&emsp;&emsp;①比较this与o是否引用相等，如果引用相等，当然直接返回true即可。<br>
+&emsp;&emsp;②判断o是否为null或者其运行时类型是否与该对象的运行时类型不同，如果o为null或运行时类型不同则直接返回false。<br>
+&emsp;&emsp;②先调用super的equals()方法比较，如果super部分不同直接返回false。<br>
+&emsp;&emsp;②将o强制类型转换为当前类型。<br>
+&emsp;&emsp;②比较o与当前对象的剩下的属性域。<br>
+&emsp;&emsp;以上便是对IDEA如何帮我们生成equals()方法介绍，本篇随笔到此结束。感谢阅读，再见！
+</span></div>
 ]]></content>
       <categories>
         <category>我的笔记</category>
