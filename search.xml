@@ -851,9 +851,11 @@ equals()方法时可能会用到的。<br>
 里面提供的Objects.equals()和Objects.hash()两个静态方法可以用来很方便的重写Object类的equals()方法，鉴于课程使用的JDK环境为JDK 8及以上，</span>
 <span style="font-size: 20px">
 所以就选择采用这种模板来重写了。<br>
-&emsp;&emsp;
-</span>
-</div>
+&emsp;&emsp;<mark>第二个可选部分并不建议，正如其下方提示所言，这种实现可能会违背之前我们所说的equals()方法的5条性质</mark>。事实上，在该实现方式中，</span>
+<span style="font-size: 20px">
+正是因为使用了instanceof运算符才导致可能违反规约的，之后我们来实际测试一下，这里我们先讲完让IDEA帮我们重写的完整操作步骤。<br>
+&emsp;&emsp;第三个可选部分是采用相应的get方法获取属性的值，一般无特殊需求时按照默认不选择该选项即可。<br>
+</span></div>
 
 ]]></content>
       <categories>
