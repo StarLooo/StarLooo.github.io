@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2k</span>
+            <span class="post-count">2.2k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">8 min</span>
+            <span class="post-count">9 min</span>
         </span>
     </span>
 </div>
@@ -135,7 +135,6 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    &#x2F;&#x2F;SubClassB类的代码</span><br><span class="line">    public class SubClassB extends SuperClass &#123;</span><br><span class="line">    &#x2F;&#x2F;extends String name from SuperClass</span><br><span class="line">    &#x2F;&#x2F;extends int elseSuperFields from SuperClass</span><br><span class="line">    int elseSubBFields;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;SubClassB的构造器</span><br><span class="line">    public SubClassB(String name, int elseSuperFields, int elseSubBFields) &#123;</span><br><span class="line">        super(name, elseSuperFields);</span><br><span class="line">        this.elseSubBFields &#x3D; elseSubBFields;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;IDEA为SubClassB自动生成的equals()方法，内部使用了instanceof关键字</span><br><span class="line">    @Override</span><br><span class="line">    public boolean equals(Object o) &#123;</span><br><span class="line">        if (this &#x3D;&#x3D; o) return true;</span><br><span class="line">        if (!(o instanceof SubClassB)) return false;</span><br><span class="line">        if (!super.equals(o)) return false;</span><br><span class="line">        SubClassB subClassB &#x3D; (SubClassB) o;</span><br><span class="line">        return elseSubBFields &#x3D;&#x3D; subClassB.elseSubBFields;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int hashCode() &#123;</span><br><span class="line">        return Objects.hash(super.hashCode(), elseSubBFields);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
 <span id="more"></span>
 
 <h2 id="二-instanceof关键字"><a href="#二-instanceof关键字" class="headerlink" title="二. instanceof关键字"></a>二. instanceof关键字</h2><div style="font-size: 0">
@@ -174,21 +173,25 @@ equals()方法时可能会用到的。<br>
 <span style="font-size: 20px">
 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ysocean/p/8486500.html#_label1">这篇博客</a>，里面有更详实的介绍。</span></div>
 
-
-
-
+<h2 id="三-getClass-方法"><a href="#三-getClass-方法" class="headerlink" title="三. getClass()方法"></a>三. getClass()方法</h2><div style="font-size: 0">
 <span style="font-size: 20px">
-
-<p>和super2、super3都是instanceof Object、也都是instanceof SuperClass，这是自然的，因为它们都是Object子类的对象，也都是SuperClass或者SuperClass子类的对象。<br></p>
-</span>
+&emsp;&emsp;接着是getClass()方法，它是Object类中一个final public的方法，说明所有的Java类都会拥有该方法且不能重写，其作用为</span>
 <span style="font-size: 20px">
-equals()方法时可能会用到的。<br>
-&emsp;&emsp;首先是instanceof运算符，它的语法为：a instanceof ClassA，其中：a是一个对象而不能是基本数据类型，ClassA是一个类的类名。</span>
+<mark>获得该对象的运行时类型。</mark>该方法由于涉及到Java反射的知识，我个人并未有很深的理解，因此这里只是通过一些简单的测试基本了解一下这个方法</span>
 <span style="font-size: 20px">
-当a是ClassA类的对象(包括a是ClassA的构造器构造出的对象，或者是ClassA的任何一个直接或者间接子类的对象，以及当ClassA是接口，a是该接口的实现类的对象等情况)</span>
-<span style="font-size: 20px">
-的时候该运算结果为true，否则为false。<br>
+是干嘛的，至于更深入的技术细节，已经超出了软件构造课的范围了。<br>
 &emsp;&emsp;我们来测试一下，测试代码如下，测试结果已经以注释的形式写在了源代码中：</span></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void getClassTest() &#123;</span><br><span class="line">    SuperClass super1 &#x3D; new SuperClass(&quot;NAME&quot;, 1);</span><br><span class="line">    SuperClass super2 &#x3D; new SubClassA(&quot;NAME&quot;, 1, 100);</span><br><span class="line">    SuperClass super3 &#x3D; new SubClassB(&quot;NAME&quot;, 1, 101);</span><br><span class="line"></span><br><span class="line">    SubClassA subA &#x3D; new SubClassA(&quot;NAME&quot;, 1, 102);</span><br><span class="line">    SubClassB subB &#x3D; new SubClassB(&quot;NAME&quot;, 1, 103);</span><br><span class="line"></span><br><span class="line">    System.out.println(super1.getClass());</span><br><span class="line">    System.out.println(super2.getClass());</span><br><span class="line">    System.out.println(super3.getClass());</span><br><span class="line">    System.out.println(subA.getClass());</span><br><span class="line">    System.out.println(subB.getClass());</span><br><span class="line"></span><br><span class="line">    &#x2F;*</span><br><span class="line">     * 测试结果，其中UsedClasses为包名</span><br><span class="line">     * class UsedClasses.SuperClass</span><br><span class="line">     * class UsedClasses.SubClassA</span><br><span class="line">     * class UsedClasses.SubClassB</span><br><span class="line">     * class UsedClasses.SubClassA</span><br><span class="line">     * class UsedClasses.SubClassB</span><br><span class="line">     *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到返回值表示的确实表示的是各个对象对应的运行时类。在本博客中，我们知道这一点就足够了。</span></div>
+
+<h2 id="四-Object类里面的equals-方法的规约分析"><a href="#四-Object类里面的equals-方法的规约分析" class="headerlink" title="四. Object类里面的equals()方法的规约分析"></a>四. Object类里面的equals()方法的规约分析</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在重写Object类的equals()方法之前，我们当然需要了解并遵守其spec，让我们来看看它的spec：<br>
+</span></div>
  
       <!-- reward -->
       
