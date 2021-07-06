@@ -808,6 +808,24 @@ equals()方法时可能会用到的。<br>
 <span style="font-size: 20px">
 &emsp;&emsp;在重写Object类的equals()方法之前，我们当然需要了解并遵守其spec，让我们来看看它的spec：<br>
 </span></div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public boolean equals(Object obj)</span><br><span class="line">Indicates whether some other object is &quot;equal to&quot; this one.</span><br><span class="line">The equals method implements an equivalence relation on non-null object references:</span><br><span class="line">    * It is reflexive: for any non-null reference value x, x.equals(x) should return true.</span><br><span class="line">    * It is symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.</span><br><span class="line">    * It is transitive: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.</span><br><span class="line">    * It is consistent: for any non-null reference values x and y, multiple invocations of x.equals(y) consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.</span><br><span class="line">    * For any non-null reference value x, x.equals(null) should return false.</span><br><span class="line">The equals method for class Object implements the most discriminating possible equivalence relation on objects; </span><br><span class="line">that is, for any non-null reference values x and y, this method returns true if and only if x and y refer to the same object (x &#x3D;&#x3D; y has the value true).</span><br><span class="line">Note that it is generally necessary to override the hashCode method whenever this method is overridden, </span><br><span class="line">so as to maintain the general contract for the hashCode method, which states that equal objects must have equal hash codes.</span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到我们重写equals()方法的时候，重写后的equals()方法需要满足以下5条性质：<br>
+&emsp;&emsp;①<mark>自反性</mark><br>
+&emsp;&emsp;②<mark>对称性</mark><br>
+&emsp;&emsp;③<mark>传递性</mark><br>
+&emsp;&emsp;④<mark>一致性</mark><br>
+&emsp;&emsp;⑤<mark>对于任何非null的对象x，x.equals(null)==true</mark><br>
+&emsp;&emsp;我们需要牢记这5点，在这篇博客剩下的部分，我们会时刻关注它们是否被满足。
+</span></div>
+
+<h2 id="四-IDEA自动生成equals-方法的原理分析"><a href="#四-IDEA自动生成equals-方法的原理分析" class="headerlink" title="四. IDEA自动生成equals()方法的原理分析"></a>四. IDEA自动生成equals()方法的原理分析</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;接下来
+</span></div>
 ]]></content>
       <categories>
         <category>我的笔记</category>
