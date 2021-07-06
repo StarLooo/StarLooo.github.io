@@ -855,8 +855,18 @@ equals()方法时可能会用到的。<br>
 <span style="font-size: 20px">
 正是因为使用了instanceof运算符才导致可能违反规约的，之后我们来实际测试一下，这里我们先讲完让IDEA帮我们重写的完整操作步骤。<br>
 &emsp;&emsp;第三个可选部分是采用相应的get方法获取属性的值，一般无特殊需求时按照默认不选择该选项即可。<br>
-</span></div>
+&emsp;&emsp;接下来按照再选择参与equals()方法判断的属性域，自动生成equals()代码只是简单地依次进行属性域的比较(基本数据类型用==，对象用Objects.equals())，</span>
+<span style="font-size: 20px">
+如下图所示：</span></div>
 
+<p><img src="https://z3.ax1x.com/2021/07/06/R7t6iV.png" alt="P4.png"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;再然后是选择参与hashCode()计算的属性域，一般默认且建议与参与equals()比较的属性域保持一致(为了保证equals的对象哈希值相同的规约)，</span>
+<span style="font-size: 20px">
+如下图所示：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/06/R7tOQe.png" alt="P5.png"></p>
 ]]></content>
       <categories>
         <category>我的笔记</category>
