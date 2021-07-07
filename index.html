@@ -190,7 +190,7 @@
 <span style="font-size: 20px">
 &emsp;&emsp;在整个后半学期的软件构造课程中，经过大量的Java编程训练后，我们的代码能力着实是有了很大的提高，在不断练习和总结的过程中，</span>
 <span style="font-size: 20px">
-自然而然地，我们会遇到各种各样的问题。因为知识所限和经验所限，踩了很多很多的坑，<mark>以下便是我对这学期在Java编程的过程当中踩的坑的一个小小总结：</mark><br>
+自然而然地，我们会遇到各种各样的问题。因为知识所限和经验所限，踩了很多很多的坑，<mark>以下便是我对这学期在Java编程的过程当中踩的坑的一个小小总结：</mark><br></span></div>
 
 <h2 id="二-各种集合类对象以及数组之间的互相转换"><a href="#二-各种集合类对象以及数组之间的互相转换" class="headerlink" title="二. 各种集合类对象以及数组之间的互相转换"></a>二. 各种集合类对象以及数组之间的互相转换</h2><div style="font-size: 0">
 <span style="font-size: 20px">
@@ -214,7 +214,7 @@
 &emsp;&emsp;②<mark>数组转List</mark>：<br>
 &emsp;&emsp;这里有两种方法，<mark>其一是使用Arrays工具类的asList()静态方法，不过这样转换后得到的List是不可变的，不能进行add()或remove()操作；另一种方法是使用</mark></span>
 <span style="font-size: 20px">
-<mark>Collections工具类的addAll()静态方法，这样转换后得到的List是可变的。</mark>两种方法的示例代码如下：<br>
+<mark>Collections工具类的addAll()静态方法，这样转换后得到的List是可变的。</mark>两种方法的示例代码如下：<br></span></div>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void Array2ListTest() &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     * 此种方法生成的List是不可变的，不可进行add()和remove()操作</span><br><span class="line">     * 其长度已经定死，与被转换的数组的长度一致</span><br><span class="line">     *&#x2F;</span><br><span class="line">    String[] array &#x3D; new String[]&#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;;</span><br><span class="line">    List&lt;String&gt; list1 &#x3D; Arrays.asList(array);</span><br><span class="line">    System.out.println(list1.toString());&#x2F;&#x2F;[a,b,c]</span><br><span class="line"></span><br><span class="line">    &#x2F;*</span><br><span class="line">     * 此种方法生成的List是可变的，可进行add()和remove()操作</span><br><span class="line">     *&#x2F;</span><br><span class="line">    List&lt;String&gt; list2 &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    Collections.addAll(list2, array);</span><br><span class="line">    System.out.println(list2.toString());&#x2F;&#x2F;[a,b,c]</span><br><span class="line">    list2.add(&quot;d&quot;);</span><br><span class="line">    list2.remove(&quot;a&quot;);</span><br><span class="line">    System.out.println(list2.toString());&#x2F;&#x2F;[b,c,d]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -235,102 +235,16 @@
 
 <div style="font-size: 0">
 <span style="font-size: 20px">
-&emsp;&emsp;需要注意的是List的remove()方法有两个，一个以int下标为参数，尝试删除该下标的元素，返回删除的元素；一个以对应对象为参数，返回是否：</span></div>
-
-<div style="font-size: 0">
+&emsp;&emsp;需要注意的是<mark>List的remove()方法有两个，一个以int下标为参数，尝试删除该下标的元素，返回删除的元素；一个以对应对象为参数，返回boolean表示是否删除成功。</mark>
+</span>
 <span style="font-size: 20px">
-&emsp;&emsp;可以看到，该类的类名叫做GeelyClass，有五个属性：String型的name，int型的age，double型的weight，</span>
+此时，若List中存储的是Integer类型的对象的话，在调用add()方法的时候，如果传入的参数是基本数据类型int，那么会进行自动装箱。</span>
 <span style="font-size: 20px">
-double型的height和char型的sex。以及一系列的方法。<br>
-&emsp;&emsp;我们可以看到有以下一些符号或者格式，它们的含义分别如下：<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp; ① "+"号修饰，表示属性或者方法的访问权限是public。<br>
-&emsp;&emsp; ② "-"号修饰，表示属性或者方法的访问权限是private。<br>
-&emsp;&emsp; ③ "#"号修饰，表示属性或者方法的访问权限是protected。<br>
-&emsp;&emsp; ④ "~"号修饰，表示属性或者方法的访问权限是default。<br>
-&emsp;&emsp; ⑤ 下划线修饰，表示属性或者方法是静态的。<br>
-&emsp;&emsp; ⑥ 字体为斜体，表示属性或者方法是抽象的。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;例如：GeelyClass的属性age是private的，属性sex是public static的，drink()方法是protected的等等。<br></span>
-<span style="font-size: 20px">
-&emsp;&emsp;以上便是对单个类的UML类图表示的信息的基本介绍，还是比较简单的。</span></div>
-
-<h2 id="三-UML类图中类与类的关系"><a href="#三-UML类图中类与类的关系" class="headerlink" title="三. UML类图中类与类的关系"></a>三. UML类图中类与类的关系</h2><div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;UML类图除了可以用来表示一个类的属性和方法以外，更重要的功能是来表示不同的类之间的联系，这种联系一共分为：泛化、实现、关联、</span>
-<span style="font-size: 20px">
-聚合和组合共五种。我们来一一介绍它们的概念以及是如何在UML类图被表示的：<br>
-&emsp;&emsp;第一种是<mark>泛化</mark>，用于表示类与类之间的继承关系，或者接口与接口之间的继承关系，以及类与接口之间的实现关系</span>
-<span style="font-size: 20px">
-即泛化分为继承和实现两种类型。<mark>在UML类图中，使用空心三角+实线连接来表示继承关系而使用空心三角+虚线连接来表示实现关系</mark>，如下图所示：</span>
+<mark>但是，在调用remove()方法的时候，却不会</mark>。因此，需要明确到底想要删除的是下标还是Integer对象，这里有一个小坑以前踩过，大家引以为戒。</span>
 </div>
 
-<p><img src="https://z3.ax1x.com/2021/07/05/RIkdbt.png" alt="illustration_2"></p>
-<div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;第二种是<mark>依赖</mark>，对于两个相对独立的对象，当一个对象负责构造另一个对象的实例，或者依靠另一个对象的服务时，</span>
-<span style="font-size: 20px">
-这两个对象之间主要体现为依赖关系。</span>
-<span style="font-size: 20px">
-<mark>在UML类图中，使用虚线箭头来表示依赖关系</mark>，如下图所示：</span>
-</div>
 
-<p><img src="https://z3.ax1x.com/2021/07/05/RIAwQJ.png" alt="illustration_3"></p>
-<div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;第三种是<mark>关联</mark>，对于两个相对独立的对象，当一个对象的实例与另一个对象的一些特定实例存在固定的对应关系时，这两个对象之间为关联关系。</span>
-<span style="font-size: 20px">
-<mark>在UML类图中，使用实线箭头来表示关联关系</mark>，如下图所示：</span>
-</div>
 
-<p><img src="https://z3.ax1x.com/2021/07/05/RIABLR.png" alt="illustration_4"></p>
-<div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;第四种是<mark>聚合</mark>，表示一种弱的拥有关系，即has-a的关系，体现的是A对象可以包含B对象，但B对象不是A对象的一部分，两个对象具有各自的生命周期。</span>
-<span style="font-size: 20px">
-<mark>在UML类图中，使用空心的菱形+实线箭头来表示聚合关系</mark>，如下图所示：</span>
-</div>
-
-<p><img src="https://z3.ax1x.com/2021/07/05/RIATTP.png" alt="illustration_5"></p>
-<div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;第五种是<mark>组合</mark>，组合是一种强的拥有关系，是一种contains-a的关系，体现了严格的部分和整体关系，部分和整体的生命周期一样。</span>
-<span style="font-size: 20px">
-<mark>在UML类图中，使用实心的菱形+实线箭头来表示聚合关系</mark>，如下图所示：</span>
-</div>
-
-<p><img src="https://z3.ax1x.com/2021/07/05/RIEemR.png" alt="illustration_6"></p>
-<div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;以上便是对UML类图是如何表示类与类之间关系的介绍。</span></div>
-
-<h2 id="四-一个举例"><a href="#四-一个举例" class="headerlink" title="四. 一个举例"></a>四. 一个举例</h2><div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;以老师在第一讲PPT给出的类图为示例，总结一下：</span></div>
-
-<p><img src="https://z3.ax1x.com/2021/07/05/RIEWNV.png" alt="illustration_7"></p>
-<div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;如上图所示，我们可以发现在这个大UML类图里，我们之前讲的都有涉及到。<br>
-&emsp;&emsp;首先是属性和方法，可以看到Generator接口</span>
-<span style="font-size: 20px">
-没有属性，符合其接口的特征；其所有方法都是用"+"修饰的，代表访问权限public，并且都是斜体的，表示这些方法是抽象的，同样也符合接口的定义。</span>
-<span style="font-size: 20px">
-然后我们再看看AbstractConvert抽象类，可以看到它的类名是斜体的，并且有两个"-"修饰的私有属性。</span><br>
-<span style="font-size: 20px">
-&emsp;&emsp;然后是彼此之间的关系，可以看到抽象类AbstractGenerator实现了Generator接口，在类图中用空心三角+虚线表示；而它又有两个子类继承它，在类图中用空心三角+实线表示</span>
-<span style="font-size: 20px">
-除此之外，我们还可以看到，AbstractConvertor抽象类与Generator接口之间有组合关系，在类图中用实心菱形+实线表示。</span><br>
-<span style="font-size: 20px">
-&emsp;&emsp;该UML类图中没有涉及到依赖关系、关联关系和聚合关系。</span></div>
-
-<h2 id="五-一个实用的画UML类图的工具"><a href="#五-一个实用的画UML类图的工具" class="headerlink" title="五. 一个实用的画UML类图的工具"></a>五. 一个实用的画UML类图的工具</h2><div style="font-size: 0">
-<span style="font-size: 20px">
-&emsp;&emsp;最后推荐一个方便的<a target="_blank" rel="noopener" href="https://www.processon.com/">画图网站</a>，除了可以画UML图外，还有许多其他的强大功能。请有兴趣的读者自行摸索！
-</span><br>
-<span style="font-size: 20px">
-&emsp;&emsp;以上便是对UML类图的简单介绍，本篇随笔到此结束。感谢阅读，再见！</span>
-</div>
  
       <!-- reward -->
       
