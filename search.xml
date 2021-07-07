@@ -906,9 +906,9 @@ equals()方法时可能会用到的。<br>
 &emsp;&emsp;可以总结出其通用步骤为：<br>
 &emsp;&emsp;①比较this与o是否引用相等，如果引用相等，当然直接返回true即可。<br>
 &emsp;&emsp;②判断o是否为null或者其运行时类型是否与该对象的运行时类型不同，如果o为null或运行时类型不同则直接返回false。<br>
-&emsp;&emsp;②先调用super的equals()方法比较，如果super部分不同直接返回false。<br>
-&emsp;&emsp;②将o强制类型转换为当前类型。<br>
-&emsp;&emsp;②比较o与当前对象的剩下的属性域。<br>
+&emsp;&emsp;③先调用super的equals()方法比较，如果super部分不同直接返回false。<br>
+&emsp;&emsp;④将o强制类型转换为当前类型。<br>
+&emsp;&emsp;⑤比较o与当前对象的剩下的属性域。<br>
 &emsp;&emsp;以上便是对IDEA如何帮我们生成equals()方法介绍，本篇随笔到此结束。感谢阅读，再见！
 </span></div>
 ]]></content>
