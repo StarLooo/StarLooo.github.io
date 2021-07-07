@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.8k</span>
+            <span class="post-count">2.4k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">7 min</span>
+            <span class="post-count">10 min</span>
         </span>
     </span>
 </div>
@@ -181,6 +181,37 @@
 <span style="font-size: 20px">
 这部分内容我已经在之前的一篇详细分析迭代器的博客中提到了，这里是<a href="https://starlooo.github.io/2021/05/21/collection_1/">传送门</a>。
 </span></div>
+
+<h2 id="六-使用arrayCopy-方法提高数组拷贝的性能"><a href="#六-使用arrayCopy-方法提高数组拷贝的性能" class="headerlink" title="六. 使用arrayCopy()方法提高数组拷贝的性能"></a>六. 使用arrayCopy()方法提高数组拷贝的性能</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;虽然软件构造更加关注正确性、健壮性、可复用性、可维护性等技术指标，但是<mark>在不破坏上述指标的前提下</mark>，优化代码的性能也是Java程序员必须的技能。
+</span>
+<span style="font-size: 20px">
+一种常见的操作是拷贝一个数组，如果我们尝试自己实现其功能的话，一个样例如下：<br>
+</span></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void manualArrayCopy10000TimesTest()&#123;</span><br><span class="line">    int size &#x3D; 100000;</span><br><span class="line">    int times &#x3D; 10000;</span><br><span class="line">    int[] array &#x3D; new int[size];</span><br><span class="line">    int[] arraydest &#x3D; new int[size];</span><br><span class="line"></span><br><span class="line">    for(int i&#x3D;0;i&lt;array.length;i++)&#123;</span><br><span class="line">        array[i] &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">    long start &#x3D; System.currentTimeMillis();</span><br><span class="line">    for (int k&#x3D;0;k&lt;times;k++)&#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;size;i++)&#123;</span><br><span class="line">            arraydest[i] &#x3D; array[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    long useTime &#x3D; System.currentTimeMillis()-start;</span><br><span class="line">    System.out.println(&quot;useTime:&quot;+useTime); &#x2F;&#x2F;用时1452ms</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;事实上，如果你尝试进行手动拷贝数组的话，聪明的IDEA会检测出这种行为，并提示"Manual array copy"，如果你允许的话，</span>
+<span style="font-size: 20px">
+IDEA会自动帮你用以下形式的arrayCopy()函数替代。</span></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void autoArrayCopy10000TimesTest()&#123;</span><br><span class="line">    int size &#x3D; 100000;</span><br><span class="line">    int times &#x3D; 10000;</span><br><span class="line">    int[] array &#x3D; new int[size];</span><br><span class="line">    int[] arraydest &#x3D; new int[size];</span><br><span class="line"></span><br><span class="line">    for(int i&#x3D;0;i&lt;array.length;i++)&#123;</span><br><span class="line">        array[i] &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">    long start &#x3D; System.currentTimeMillis();</span><br><span class="line">    for (int k&#x3D;0;k&lt;times;k++)&#123;</span><br><span class="line">        System.arraycopy(array, 0, arraydest, 0, size);</span><br><span class="line">    &#125;</span><br><span class="line">    long useTime &#x3D; System.currentTimeMillis()-start;</span><br><span class="line">    System.out.println(&quot;useTime:&quot;+useTime); &#x2F;&#x2F;用时415ms</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到效率几乎提高了两倍</span>
+<span style="font-size: 20px">
+IDEA会自动帮你用以下形式的arrayCopy()函数替代，这是JDK为我们提供的一个更高效的数组拷贝方法，也是<mark>极其建议我们使用的</mark>。</span></div>
+
+<h2 id="七-总结"><a href="#七-总结" class="headerlink" title="七. 总结"></a>七. 总结</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;提高自己的编程能力本身就是一个大量试错的过程，随着代码量的提高，我们所会犯下的低级错误也会越来越少，但无论如何，过往犯下的错误</span>
+<span style="font-size: 20px">
+正是我们的一笔宝贵的财富，我们需要好好总结这些踩过的坑，从里面总结出有用的经验和教训。所以，从这个角度来说<mark>这篇博客还会更新，永无止境</mark><br>
+&emsp;&emsp;不过时间有限，更多的内容也只能留待软件构造课程之后的Java学习之路了，希望本片随笔能够对大家有所帮助，本篇随笔到此结束，感谢阅读！</span></div>
  
       <!-- reward -->
       
