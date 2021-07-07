@@ -252,7 +252,13 @@
 <span style="font-size: 20px">
 &emsp;&emsp;如测试结果所示，全角空格并未被trim()函数截去，这一点提醒我们在涉及文件读入处理的时候需要注意编码环境。</span></div>
 
-
+<h2 id="五-forEach循环或是使用迭代器的时候不能修改依赖的容器"><a href="#五-forEach循环或是使用迭代器的时候不能修改依赖的容器" class="headerlink" title="五. forEach循环或是使用迭代器的时候不能修改依赖的容器"></a>五. forEach循环或是使用迭代器的时候不能修改依赖的容器</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;更准确的说，<mark>forEach循环中不能修改依赖的容器；用迭代器遍历的时候只能使用Iterator接口及其实现类提供的remove()方法来对依赖的容器进行删除操作。</mark>
+</span>
+<span style="font-size: 20px">
+这部分内容我已经在之前的一篇详细分析迭代器的博客中提到了，这里是<a href="https://starlooo.github.io/2021/05/21/collection_1/">传送门</a>。
+</span></div>
  
       <!-- reward -->
       
