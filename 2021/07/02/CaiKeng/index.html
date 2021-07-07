@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -165,6 +165,14 @@
 <mark>但是，在调用remove()方法的时候，却不会</mark>。因此，需要明确到底想要删除的是下标还是Integer对象，这里有一个小坑以前踩过，大家引以为戒。</span>
 </div>
 
+<h2 id="四-String的trim-函数不会去除全角空格"><a href="#四-String的trim-函数不会去除全角空格" class="headerlink" title="四. String的trim()函数不会去除全角空格"></a>四. String的trim()函数不会去除全角空格</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;做Lab3的时候，大家都应该踩过这个坑，即：<mark>Srting类中提供用来去除一个字符串的收尾空格的trim()方法只会去除半角空格，而不会去除全角空格</mark>，我们来测试一下：</span></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void trimTest() &#123;</span><br><span class="line">    String originString &#x3D; (char) 12288 + &quot;abcd&quot; + &quot; &quot;; &#x2F;&#x2F;(char)12288表示全角空格，行尾的是半角空格</span><br><span class="line">    System.out.println(originString + &quot;***&quot;); &#x2F;&#x2F;　abcd ***</span><br><span class="line">    String trimString &#x3D; originString.trim();</span><br><span class="line">    System.out.println(trimString + &quot;***&quot;); &#x2F;&#x2F;　abcd***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;如测试结果所示，全角空格并未被trim()函数截去，这一点提醒我们在涉及文件读入处理的时候需要注意编码环境。</span></div>
 
 
  
