@@ -921,4 +921,160 @@ equals()方法时可能会用到的。<br>
         <tag>随笔</tag>
       </tags>
   </entry>
+  <entry>
+    <title>软件构造课程随笔--一些踩坑总结</title>
+    <url>/2021/07/02/CaiKeng/</url>
+    <content><![CDATA[<h1 id="软件构造课程随笔–一些踩坑总结"><a href="#软件构造课程随笔–一些踩坑总结" class="headerlink" title="软件构造课程随笔–一些踩坑总结"></a><center>软件构造课程随笔–一些踩坑总结</center></h1><h2 id="一-写在前面"><a href="#一-写在前面" class="headerlink" title="一. 写在前面"></a>一. 写在前面</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;在整个后半学期的软件构造课程中，经过大量的Java编程训练后，我们的代码能力着实是有了很大的提高，在不断练习和总结的过程中，</span>
+<span style="font-size: 20px">
+自然而然地，我们会遇到各种各样的问题。因为知识所限和经验所限，踩了很多很多的坑，<mark>以下便是我对这学期在Java编程的过程当中踩的坑的一个小小总结：</mark><br>
+
+<h2 id="二-各种集合类对象以及数组之间的互相转换"><a href="#二-各种集合类对象以及数组之间的互相转换" class="headerlink" title="二. 各种集合类对象以及数组之间的互相转换"></a>二. 各种集合类对象以及数组之间的互相转换</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;不言而喻，JDK中的集合类是我们使用的最多的JDK提供的容器了，很多时候都会遇到这样的一系列问题：怎样在把一个某种集合类（数组）的对象转换为另一种集合类（数组）的对象？</span>
+<span style="font-size: 20px">这个问题可以划分为一系列的子问题，我们来依次看一看其中常见的几个转换（其余同理，读者可自行总结）：<br>
+&emsp;&emsp;①<mark>List转数组</mark>：<br>
+&emsp;&emsp;推荐的方式是采用List接口的toArray()方法，该方法有两个重载，其一是不含参的，其二是含参的，其spec如下所示，<mark>这里需要使用含参的重载</mark>，</span>
+<span style="font-size: 20px">
+之前我就是不知道需要使用含参的重载，直接使用无参的toArray()加上强制类型转换，结果直接运行时抛出了类型无法转换的运行时异常，显然Object[]数组不能强制转换为我们想要的对象数组。</span></div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;重载1：无参，返回Object[]</span><br><span class="line">Object[] toArray()</span><br><span class="line">Returns an array containing all of the elements in this list in proper sequence (from first to last element).</span><br><span class="line">The returned array will be &quot;safe&quot; in that no references to it are maintained by this list. </span><br><span class="line">(In other words, this method must allocate a new array even if this list is backed by an array). </span><br><span class="line">The caller is thus free to modify the returned array.</span><br><span class="line">This method acts as bridge between array-based and collection-based APIs.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;重载2：有泛型参数T，返回T[] </span><br><span class="line">&lt;T&gt; T[] toArray(T[] a)</span><br><span class="line">Returns an array containing all of the elements in this list in proper sequence (from first to last element); </span><br><span class="line">the runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is returned therein.</span><br><span class="line">Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.</span><br><span class="line">If the list fits in the specified array with room to spare (i.e., the array has more elements than the list), </span><br><span class="line">the element in the array immediately following the end of the list is set to null. </span><br><span class="line">(This is useful in determining the length of the list only if the caller knows that the list does not contain any null elements.)</span><br><span class="line"></span><br><span class="line">Like the toArray() method, this method acts as bridge between array-based and collection-based APIs. Further, this method allows precise control over the runtime type of the output array, and may, under certain circumstances, be used to save allocation costs.</span><br><span class="line"></span><br><span class="line">Suppose x is a list known to contain only strings. The following code can be used to dump the list into a newly allocated array of String:</span><br><span class="line">     String[] y &#x3D; x.toArray(new String[0]);</span><br><span class="line"> </span><br><span class="line">Note that toArray(new Object[0]) is identical in function to toArray().</span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;正确的示例转换代码如下：<br></span></div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void List2ArrayTest() &#123;</span><br><span class="line">    List&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    list.add(&quot;a&quot;);</span><br><span class="line">    list.add(&quot;b&quot;);</span><br><span class="line">    list.add(&quot;c&quot;);</span><br><span class="line">    &#x2F;&#x2F;将List转换为Array的方法：</span><br><span class="line">    String[] array &#x3D; list.toArray(new String[0]);</span><br><span class="line">    System.out.println(Arrays.toString(array));&#x2F;&#x2F;[a,b,c]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;②<mark>数组转List</mark>：<br>
+&emsp;&emsp;这里有两种方法，<mark>其一是使用Arrays工具类的asList()静态方法，不过这样转换后得到的List是不可变的，不能进行add()或remove()操作；另一种方法是使用</mark></span>
+<span style="font-size: 20px">
+<mark>Collections工具类的addAll()静态方法，这样转换后得到的List是可变的。</mark>两种方法的示例代码如下：<br>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void Array2ListTest() &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     * 此种方法生成的List是不可变的，不可进行add()和remove()操作</span><br><span class="line">     * 其长度已经定死，与被转换的数组的长度一致</span><br><span class="line">     *&#x2F;</span><br><span class="line">    String[] array &#x3D; new String[]&#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;;</span><br><span class="line">    List&lt;String&gt; list1 &#x3D; Arrays.asList(array);</span><br><span class="line">    System.out.println(list1.toString());&#x2F;&#x2F;[a,b,c]</span><br><span class="line"></span><br><span class="line">    &#x2F;*</span><br><span class="line">     * 此种方法生成的List是可变的，可进行add()和remove()操作</span><br><span class="line">     *&#x2F;</span><br><span class="line">    List&lt;String&gt; list2 &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    Collections.addAll(list2, array);</span><br><span class="line">    System.out.println(list2.toString());&#x2F;&#x2F;[a,b,c]</span><br><span class="line">    list2.add(&quot;d&quot;);</span><br><span class="line">    list2.remove(&quot;a&quot;);</span><br><span class="line">    System.out.println(list2.toString());&#x2F;&#x2F;[b,c,d]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;③<mark>Set和List的互相转换</mark>：<br>
+&emsp;&emsp;直接使用JDK集合类中提供的重载的构造方法即可，此略。<br>
+&emsp;&emsp;④<mark>Set和数组的互相转换</mark>：<br>
+&emsp;&emsp;数组到Set的转换需要通过List做桥梁；而Set到数组的转化可以使用toArray()方法，与①中List转数组类似。<br>
+</span></div>
+    
+
+<h2 id="二-UML类图的基本结构"><a href="#二-UML类图的基本结构" class="headerlink" title="二. UML类图的基本结构"></a>二. UML类图的基本结构</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;UML的基本结构是：对于每个类，采用一个矩形方框来表示，整个矩形方框分为三部分的小矩形，最上方是该类的类名；中间表示该类的属性；
+</span>
+<span style="font-size: 20px">
+最下方是该类的方法。如下图所示是一个类在类图中的表示：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/R5qWHs.png" alt="illustration_1"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;可以看到，该类的类名叫做GeelyClass，有五个属性：String型的name，int型的age，double型的weight，</span>
+<span style="font-size: 20px">
+double型的height和char型的sex。以及一系列的方法。<br>
+&emsp;&emsp;我们可以看到有以下一些符号或者格式，它们的含义分别如下：<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp; ① "+"号修饰，表示属性或者方法的访问权限是public。<br>
+&emsp;&emsp; ② "-"号修饰，表示属性或者方法的访问权限是private。<br>
+&emsp;&emsp; ③ "#"号修饰，表示属性或者方法的访问权限是protected。<br>
+&emsp;&emsp; ④ "~"号修饰，表示属性或者方法的访问权限是default。<br>
+&emsp;&emsp; ⑤ 下划线修饰，表示属性或者方法是静态的。<br>
+&emsp;&emsp; ⑥ 字体为斜体，表示属性或者方法是抽象的。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;例如：GeelyClass的属性age是private的，属性sex是public static的，drink()方法是protected的等等。<br></span>
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对单个类的UML类图表示的信息的基本介绍，还是比较简单的。</span></div>
+
+<h2 id="三-UML类图中类与类的关系"><a href="#三-UML类图中类与类的关系" class="headerlink" title="三. UML类图中类与类的关系"></a>三. UML类图中类与类的关系</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;UML类图除了可以用来表示一个类的属性和方法以外，更重要的功能是来表示不同的类之间的联系，这种联系一共分为：泛化、实现、关联、</span>
+<span style="font-size: 20px">
+聚合和组合共五种。我们来一一介绍它们的概念以及是如何在UML类图被表示的：<br>
+&emsp;&emsp;第一种是<mark>泛化</mark>，用于表示类与类之间的继承关系，或者接口与接口之间的继承关系，以及类与接口之间的实现关系</span>
+<span style="font-size: 20px">
+即泛化分为继承和实现两种类型。<mark>在UML类图中，使用空心三角+实线连接来表示继承关系而使用空心三角+虚线连接来表示实现关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIkdbt.png" alt="illustration_2"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;第二种是<mark>依赖</mark>，对于两个相对独立的对象，当一个对象负责构造另一个对象的实例，或者依靠另一个对象的服务时，</span>
+<span style="font-size: 20px">
+这两个对象之间主要体现为依赖关系。</span>
+<span style="font-size: 20px">
+<mark>在UML类图中，使用虚线箭头来表示依赖关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIAwQJ.png" alt="illustration_3"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;第三种是<mark>关联</mark>，对于两个相对独立的对象，当一个对象的实例与另一个对象的一些特定实例存在固定的对应关系时，这两个对象之间为关联关系。</span>
+<span style="font-size: 20px">
+<mark>在UML类图中，使用实线箭头来表示关联关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIABLR.png" alt="illustration_4"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;第四种是<mark>聚合</mark>，表示一种弱的拥有关系，即has-a的关系，体现的是A对象可以包含B对象，但B对象不是A对象的一部分，两个对象具有各自的生命周期。</span>
+<span style="font-size: 20px">
+<mark>在UML类图中，使用空心的菱形+实线箭头来表示聚合关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIATTP.png" alt="illustration_5"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;第五种是<mark>组合</mark>，组合是一种强的拥有关系，是一种contains-a的关系，体现了严格的部分和整体关系，部分和整体的生命周期一样。</span>
+<span style="font-size: 20px">
+<mark>在UML类图中，使用实心的菱形+实线箭头来表示聚合关系</mark>，如下图所示：</span>
+</div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIEemR.png" alt="illustration_6"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对UML类图是如何表示类与类之间关系的介绍。</span></div>
+
+<h2 id="四-一个举例"><a href="#四-一个举例" class="headerlink" title="四. 一个举例"></a>四. 一个举例</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;以老师在第一讲PPT给出的类图为示例，总结一下：</span></div>
+
+<p><img src="https://z3.ax1x.com/2021/07/05/RIEWNV.png" alt="illustration_7"></p>
+<div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;如上图所示，我们可以发现在这个大UML类图里，我们之前讲的都有涉及到。<br>
+&emsp;&emsp;首先是属性和方法，可以看到Generator接口</span>
+<span style="font-size: 20px">
+没有属性，符合其接口的特征；其所有方法都是用"+"修饰的，代表访问权限public，并且都是斜体的，表示这些方法是抽象的，同样也符合接口的定义。</span>
+<span style="font-size: 20px">
+然后我们再看看AbstractConvert抽象类，可以看到它的类名是斜体的，并且有两个"-"修饰的私有属性。</span><br>
+<span style="font-size: 20px">
+&emsp;&emsp;然后是彼此之间的关系，可以看到抽象类AbstractGenerator实现了Generator接口，在类图中用空心三角+虚线表示；而它又有两个子类继承它，在类图中用空心三角+实线表示</span>
+<span style="font-size: 20px">
+除此之外，我们还可以看到，AbstractConvertor抽象类与Generator接口之间有组合关系，在类图中用实心菱形+实线表示。</span><br>
+<span style="font-size: 20px">
+&emsp;&emsp;该UML类图中没有涉及到依赖关系、关联关系和聚合关系。</span></div>
+
+<h2 id="五-一个实用的画UML类图的工具"><a href="#五-一个实用的画UML类图的工具" class="headerlink" title="五. 一个实用的画UML类图的工具"></a>五. 一个实用的画UML类图的工具</h2><div style="font-size: 0">
+<span style="font-size: 20px">
+&emsp;&emsp;最后推荐一个方便的<a href="https://www.processon.com/">画图网站</a>，除了可以画UML图外，还有许多其他的强大功能。请有兴趣的读者自行摸索！
+</span><br>
+<span style="font-size: 20px">
+&emsp;&emsp;以上便是对UML类图的简单介绍，本篇随笔到此结束。感谢阅读，再见！</span>
+</div>
+]]></content>
+      <categories>
+        <category>我的笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>软件构造</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
 </search>
