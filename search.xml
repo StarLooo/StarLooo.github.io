@@ -822,7 +822,7 @@ equals()方法时可能会用到的。<br>
 &emsp;&emsp;我们需要牢记这5点，在这篇博客剩下的部分，我们会时刻关注它们是否被满足。
 </span></div>
 
-<h2 id="四-IDEA自动生成equals-方法的原理分析"><a href="#四-IDEA自动生成equals-方法的原理分析" class="headerlink" title="四. IDEA自动生成equals()方法的原理分析"></a>四. IDEA自动生成equals()方法的原理分析</h2><div style="font-size: 0">
+<h2 id="五-IDEA自动生成equals-方法的原理分析"><a href="#五-IDEA自动生成equals-方法的原理分析" class="headerlink" title="五. IDEA自动生成equals()方法的原理分析"></a>五. IDEA自动生成equals()方法的原理分析</h2><div style="font-size: 0">
 <span style="font-size: 20px">
 &emsp;&emsp;接下来我们正式进入对IDEA自动生成equals()方法的原理分析部分。以SuperClass为例，</span>
 <span style="font-size: 20px">
